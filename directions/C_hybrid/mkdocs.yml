@@ -1,0 +1,30 @@
+INHERIT: ../../mkdocs.yml
+
+docs_dir: ../../docs
+site_name: Chris Carpenter
+site_description: Portfolio — engineering meets space-ops
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.instant
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    - scheme: hybrid
+      primary: custom
+      accent: custom
+  font:
+    text: Oswald
+    code: JetBrains Mono
+  icon:
+    logo: material/satellite-variant
+    repo: fontawesome/brands/github
+
+extra_css:
+  - assets/stylesheets/hybrid.css

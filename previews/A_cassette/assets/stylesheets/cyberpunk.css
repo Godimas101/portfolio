@@ -1,0 +1,290 @@
+/* ========================================================================
+   Direction B — CYBERPUNK
+   2077 UI. Neon glow. Corner-cut panels. Cyan + magenta + yellow triad
+   on deep void black.
+   ======================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Oxanium:wght@500;700&family=Rajdhani:wght@400;500;700&display=swap');
+
+:root {
+  --cp-void: #0b0c15;
+  --cp-void-deep: #050612;
+  --cp-panel: #101326;
+  --cp-yellow: #fcee0a;
+  --cp-cyan: #05d9e8;
+  --cp-magenta: #ff2a6d;
+  --cp-magenta-glow: #ff5c94;
+  --cp-cyan-glow: #7dfffa;
+  --cp-fg: #d5e8ff;
+  --cp-fg-dim: #7a8dad;
+}
+
+[data-md-color-scheme="cyberpunk"],
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: var(--cp-yellow);
+  --md-primary-fg-color--light: var(--cp-cyan);
+  --md-primary-fg-color--dark: var(--cp-magenta);
+  --md-primary-bg-color: var(--cp-void);
+
+  --md-accent-fg-color: var(--cp-cyan);
+  --md-accent-fg-color--transparent: rgba(5, 217, 232, 0.15);
+  --md-accent-bg-color: var(--cp-void);
+
+  --md-default-bg-color: var(--cp-void);
+  --md-default-bg-color--light: var(--cp-panel);
+  --md-default-fg-color: var(--cp-fg);
+  --md-default-fg-color--light: var(--cp-fg-dim);
+  --md-default-fg-color--lighter: var(--cp-fg-dim);
+
+  --md-code-fg-color: var(--cp-cyan);
+  --md-code-bg-color: var(--cp-void-deep);
+
+  --md-typeset-color: var(--cp-fg);
+  --md-typeset-a-color: var(--cp-cyan);
+  --md-typeset-a-color--hover: var(--cp-yellow);
+}
+
+body {
+  background:
+    radial-gradient(ellipse at top left, rgba(255, 42, 109, 0.06), transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(5, 217, 232, 0.06), transparent 50%),
+    var(--cp-void);
+  color: var(--cp-fg);
+  font-family: 'Rajdhani', system-ui, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* ---- HEADINGS ---- */
+.md-typeset h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 3.5rem;
+  color: var(--cp-yellow);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 20px rgba(252, 238, 10, 0.5),
+    2px 0 0 var(--cp-magenta),
+    -2px 0 0 var(--cp-cyan);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.md-typeset h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cp-yellow), var(--cp-cyan) 50%, var(--cp-magenta));
+}
+
+.md-typeset h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--cp-cyan);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 0 15px rgba(5, 217, 232, 0.5);
+  margin-top: 3rem;
+}
+
+.md-typeset h3 {
+  font-family: 'Oxanium', sans-serif;
+  font-weight: 700;
+  color: var(--cp-magenta);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+}
+
+/* ---- HEADER + TABS ---- */
+.md-header {
+  background: linear-gradient(180deg, var(--cp-void) 0%, var(--cp-void-deep) 100%);
+  border-bottom: 1px solid var(--cp-cyan);
+  box-shadow: 0 0 30px rgba(5, 217, 232, 0.15);
+}
+
+.md-header__title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  color: var(--cp-yellow);
+  text-shadow: 0 0 12px rgba(252, 238, 10, 0.4);
+  letter-spacing: 0.12em;
+}
+
+.md-tabs {
+  background: var(--cp-void-deep);
+  border-bottom: 1px solid var(--cp-magenta);
+}
+
+.md-tabs__link {
+  font-family: 'Oxanium', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cp-fg-dim);
+}
+
+.md-tabs__link--active {
+  color: var(--cp-yellow);
+  text-shadow: 0 0 8px rgba(252, 238, 10, 0.6);
+}
+
+/* ---- GRID CARDS — corner-cut panels ---- */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid > ul > li {
+  background: linear-gradient(135deg, var(--cp-panel) 0%, var(--cp-void-deep) 100%);
+  border: 1px solid var(--cp-cyan);
+  border-radius: 0;
+  padding: 1.6rem;
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 0 20px rgba(5, 217, 232, 0.08), inset 0 0 40px rgba(5, 217, 232, 0.02);
+}
+
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid > ul > li:hover {
+  border-color: var(--cp-yellow);
+  transform: translateY(-3px);
+  box-shadow: 0 0 40px rgba(5, 217, 232, 0.25), 0 5px 30px rgba(255, 42, 109, 0.2);
+}
+
+.md-typeset .grid.cards > ul > li > p:first-child,
+.md-typeset .grid > ul > li > p:first-child {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  color: var(--cp-yellow);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 1.15rem;
+  text-shadow: 0 0 10px rgba(252, 238, 10, 0.4);
+}
+
+/* ---- LINKS ---- */
+.md-typeset a {
+  color: var(--cp-cyan);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.md-typeset a:hover {
+  color: var(--cp-yellow);
+  border-bottom-color: var(--cp-yellow);
+  text-shadow: 0 0 8px rgba(252, 238, 10, 0.6);
+}
+
+/* ---- CODE ---- */
+.md-typeset code {
+  color: var(--cp-magenta);
+  background: rgba(255, 42, 109, 0.1);
+  border: 1px solid rgba(255, 42, 109, 0.3);
+  padding: 0.1em 0.4em;
+}
+
+.md-typeset pre {
+  background: var(--cp-void-deep);
+  border: 1px solid var(--cp-cyan);
+  border-radius: 0;
+  box-shadow: inset 0 0 20px rgba(5, 217, 232, 0.05);
+}
+
+.md-typeset pre::before {
+  content: '> EXEC';
+  display: block;
+  padding: 0.4rem 0.8rem;
+  background: linear-gradient(90deg, var(--cp-magenta), var(--cp-cyan));
+  color: var(--cp-void);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  margin: -1em -1em 0.5em;
+}
+
+/* ---- TABLES ---- */
+.md-typeset table {
+  border: 1px solid var(--cp-cyan);
+  background: var(--cp-panel);
+}
+
+.md-typeset th {
+  background: linear-gradient(90deg, var(--cp-magenta), var(--cp-cyan));
+  color: var(--cp-void);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.md-typeset td {
+  border-bottom: 1px solid rgba(5, 217, 232, 0.15);
+  color: var(--cp-fg);
+}
+
+/* ---- STAT GRID ---- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.md-typeset .stat {
+  display: inline-block;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 2.8rem;
+  color: var(--cp-yellow);
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-shadow:
+    0 0 20px rgba(252, 238, 10, 0.6),
+    1px 0 0 var(--cp-magenta),
+    -1px 0 0 var(--cp-cyan);
+  margin-right: 0.4rem;
+}
+
+/* ---- HORIZONTAL RULE — glitchy neon line ---- */
+.md-typeset hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--cp-magenta) 20%,
+    var(--cp-yellow) 50%,
+    var(--cp-cyan) 80%,
+    transparent 100%);
+  box-shadow: 0 0 15px rgba(5, 217, 232, 0.4);
+  margin: 3rem 0;
+}
+
+/* ---- BLOCKQUOTES ---- */
+.md-typeset blockquote {
+  border: none;
+  border-left: 4px solid var(--cp-magenta);
+  background: linear-gradient(90deg, rgba(255, 42, 109, 0.1), transparent);
+  color: var(--cp-cyan);
+  padding: 1rem 1.4rem;
+  font-style: italic;
+}
+
+/* ---- FOOTER ---- */
+.md-footer,
+.md-footer-meta {
+  background: var(--cp-void-deep);
+  color: var(--cp-fg-dim);
+  border-top: 1px solid var(--cp-cyan);
+  box-shadow: 0 -2px 20px rgba(5, 217, 232, 0.1);
+}
+
+/* ---- SEARCH ---- */
+.md-search__input {
+  background: rgba(5, 217, 232, 0.08);
+  color: var(--cp-fg);
+  border: 1px solid var(--cp-cyan);
+}
