@@ -1,0 +1,96 @@
+site_name: Chris Carpenter
+site_description: Portfolio — SE + MW5 mods, The Canadian Space, AI-assisted automation
+site_author: Chris Carpenter (Godimas101)
+site_url: https://portfolio.godimas.dev
+
+# Base config — direction-specific overrides live under directions/*/mkdocs.yml
+# and INHERIT this file via `INHERIT` key.
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.instant
+    - navigation.tracking
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tooltips
+    - content.tabs.link
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: blue
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    logo: material/rocket-launch
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - Highlights:
+    - InfoLCD Apex Update: projects/infolcd.md
+    - The Canadian Space: projects/canadian-space.md
+    - R13verGrrl (MW5): projects/r13vergrrl.md
+    - Tools + Utilities: projects/tools.md
+  - About: about.md
+
+plugins:
+  - search
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: false
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      title: On this page
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Godimas101
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/rustygear/
+    - icon: fontawesome/brands/patreon
+      link: https://patreon.com/Godimas101
+    - icon: fontawesome/brands/steam
+      link: https://steamcommunity.com/id/godimas
+  generator: false
