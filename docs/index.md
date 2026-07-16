@@ -14,17 +14,9 @@ Some of it ships to 1,300+ Steam Workshop subscribers. Some of it runs 24/7 on a
 
 ---
 
-## Currently shipping
+## Major projects
 
 <div class="grid cards" markdown>
-
--   :material-monitor-dashboard:{ .lg .middle } **InfoLCD — Apex Update**
-
-    ---
-
-    Flagship Space Engineers mod. Real-time ship + base data on Apex LCD blocks. Client-side only, save-safe, zero server load. **1,335+ Steam Workshop subscribers.**
-
-    [→ Read more](projects/infolcd.md)
 
 -   :material-rocket:{ .lg .middle } **The Canadian Space**
 
@@ -32,23 +24,39 @@ Some of it ships to 1,300+ Steam Workshop subscribers. Some of it runs 24/7 on a
 
     Automated aerospace newsroom. n8n orchestrates 39 workflows across 7 blog streams, an AI editor pass, cost tracking, and social publishing. Self-hosted on OVH. Runs 24/7.
 
-    [→ Read more](projects/canadian-space.md)
+    [:material-web: thecanadian.space](https://thecanadian.space){ .md-button .md-button--primary }
+    [:material-github: The-Canadian-Space](https://github.com/The-Canadian-Space){ .md-button }
 
--   :material-account-heart:{ .lg .middle } **R13verGrrl (MechWarrior 5)**
-
-    ---
-
-    Hero pilot mod in development. Voice lines in Turkish + English (with cat meows). Simple unlock quest. A love letter, but in the form of a hireable mercenary.
-
-    [→ Read more](projects/r13vergrrl.md)
-
--   :material-tools:{ .lg .middle } **Standalone tools**
+-   :material-package-variant:{ .lg .middle } **Space Engineers + MechWarrior 5 Mods**
 
     ---
 
-    Universal Image + Audio Converters for SE modders. Claude Usage Monitor for Claude Code sessions. Table-to-Chart GitHub Action. Weight-log automation with Wyze scales + n8n.
+    Published mod collection under the `gitpush-mod` GitHub org. Flagship: **InfoLCD Apex Update** — 1,335+ Steam Workshop subscribers. Also NJFL family, Tiered Build & Repair, SG Core bundle, MW5 ZuluBetterHeroes Reforged, and the R13verGrrl pilot mod in development.
 
-    [→ See the toolkit](projects/tools.md)
+    [:material-steam: Steam Workshop](https://steamcommunity.com/id/godimas/myworkshopfiles){ .md-button .md-button--primary }
+    [:material-github: gitpush-mod](https://github.com/gitpush-mod){ .md-button }
+
+-   :material-crane:{ .lg .middle } **Star Org** <span class="construction-tag">UNDER CONSTRUCTION</span>
+
+    ---
+
+    Star Citizen organization platform — event management, member coordination, org-facing tooling. Currently in development.
+
+    [:material-book-open-page-variant: wiki.starorg.tools](https://wiki.starorg.tools/){ .md-button .md-button--primary }
+    [:material-github: SC-ORG-BOT wiki](https://github.com/voidput/SC-ORG-BOT/wiki){ .md-button }
+
+</div>
+
+---
+
+## Standalone tools
+
+<div class="grid" markdown>
+
+- **[universal-image-converter](https://github.com/Godimas101/universal-image-converter)** — Windows tool for SE modders. Image → DDS textures + pasteable LCD art.
+- **[universal-audio-converter](https://github.com/Godimas101/universal-audio-converter)** — Full SE audio pipeline: convert, edit, generate SBC files.
+- **[claude-usage-monitor](https://github.com/Godimas101/claude-usage-monitor)** — Windows widget for Claude Code session tracking. Amber phosphor aesthetic.
+- **[se-claude-skill](https://github.com/Godimas101/se-claude-skill)** — Space Engineers modding skill for Claude Code.
 
 </div>
 
@@ -71,18 +79,13 @@ Some of it ships to 1,300+ Steam Workshop subscribers. Some of it runs 24/7 on a
 
 ---
 
-## Where I live online
+## Reach out
 
-<div class="grid cards" markdown>
+<div class="grid" markdown>
 
-- **GitHub:** [Godimas101](https://github.com/Godimas101) — personal tools + docs
-- **GitHub:** [gitpush-mod](https://github.com/gitpush-mod) — all published game mods
-- **GitHub:** [The-Canadian-Space](https://github.com/The-Canadian-Space) — TCS newsroom
-- **Blog:** [thecanadian.space](https://thecanadian.space) — aerospace news, automated
-- **Wiki:** [wiki.thecanadian.space](https://wiki.thecanadian.space) — TCS public docs
-- **Steam:** [Workshop](https://steamcommunity.com/id/godimas/myworkshopfiles) — SE + MW5 mods
-- **Patreon:** [running project log](https://patreon.com/Godimas101) — behind-the-scenes
-- **LinkedIn:** [rustygear](https://www.linkedin.com/in/rustygear/) — work stuff
+- :material-linkedin:{ .lg } **[LinkedIn](https://www.linkedin.com/in/rustygear/)** — work stuff
+- :fontawesome-brands-patreon:{ .lg } **[Patreon](https://patreon.com/Godimas101)** — the running project log
+- :fontawesome-brands-discord:{ .lg } **[Discord](https://discord.com/users/235753132594823169)** — DM me directly
 
 </div>
 

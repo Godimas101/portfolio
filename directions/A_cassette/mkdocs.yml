@@ -1,3 +1,8 @@
+# NOTE: 2026-07-16 — Chris picked this direction. The base `mkdocs.yml`
+# in the repo root now uses cassette-core.css directly. This overlay
+# file is kept as a version with a snappier site_name in case Chris ever
+# wants the "NOSTROMO-CLASS" branding version.
+
 INHERIT: ../../mkdocs.yml
 
 docs_dir: ../../docs

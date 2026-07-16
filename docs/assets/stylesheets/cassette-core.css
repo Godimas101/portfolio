@@ -327,3 +327,155 @@ body::before {
 .md-search__input::placeholder {
   color: var(--cc-fg-dim);
 }
+
+/* ---- BUTTONS (used inside Major Projects cards for link-outs) ---- */
+.md-typeset .md-button {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cc-amber);
+  background: transparent;
+  border: 1px solid var(--cc-amber-dim);
+  border-radius: 0;
+  padding: 0.35rem 1rem;
+  margin: 0.4rem 0.4rem 0.4rem 0;
+  transition: all 0.2s ease;
+  text-shadow: 0 0 8px rgba(197, 176, 41, 0.25);
+  position: relative;
+}
+
+.md-typeset .md-button::before {
+  content: '▸';
+  margin-right: 0.4rem;
+  color: var(--cc-warning-yellow);
+}
+
+.md-typeset .md-button:hover {
+  color: var(--cc-black);
+  background: var(--cc-amber);
+  border-color: var(--cc-amber);
+  text-shadow: none;
+  box-shadow: 0 0 20px rgba(197, 176, 41, 0.35);
+}
+
+.md-typeset .md-button:hover::before {
+  color: var(--cc-black);
+}
+
+.md-typeset .md-button--primary {
+  background: var(--cc-warning-yellow);
+  color: var(--cc-black);
+  border-color: var(--cc-warning-yellow);
+  font-weight: 700;
+  text-shadow: none;
+}
+
+.md-typeset .md-button--primary::before {
+  color: var(--cc-black);
+}
+
+.md-typeset .md-button--primary:hover {
+  background: var(--cc-amber-glow);
+  border-color: var(--cc-amber-glow);
+  box-shadow: 0 0 25px rgba(230, 207, 58, 0.5);
+}
+
+/* ---- UNDER CONSTRUCTION TAG (Star Org card) ---- */
+.md-typeset .construction-tag {
+  display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--cc-black);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--cc-warning-yellow),
+    var(--cc-warning-yellow) 6px,
+    var(--cc-black) 6px,
+    var(--cc-black) 12px
+  );
+  padding: 0.2rem 0.7rem 0.15rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  border: 1px solid var(--cc-warning-yellow);
+  text-shadow: 1px 1px 0 var(--cc-warning-yellow), -1px -1px 0 var(--cc-warning-yellow);
+  animation: hazard-pulse 3s ease-in-out infinite;
+}
+
+@keyframes hazard-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.7; }
+}
+
+/* ---- SMALL GRID (Standalone tools + Reach out sections) ---- */
+/* Distinguishes from .grid.cards (large cards) — these are compact link rows */
+.md-typeset .grid:not(.cards) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.md-typeset .grid:not(.cards) > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: contents;
+}
+
+.md-typeset .grid:not(.cards) > ul > li {
+  background: rgba(197, 176, 41, 0.04);
+  border: 1px solid var(--cc-amber-dim);
+  border-radius: 0;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  position: relative;
+  transition: all 0.2s ease;
+  min-height: unset;
+  box-shadow: none;
+}
+
+/* Remove the corner brackets from small-grid cards — reserve those for major projects */
+.md-typeset .grid:not(.cards) > ul > li::before,
+.md-typeset .grid:not(.cards) > ul > li::after {
+  display: none;
+}
+
+.md-typeset .grid:not(.cards) > ul > li:hover {
+  border-color: var(--cc-amber);
+  background: rgba(197, 176, 41, 0.08);
+  transform: none;
+  box-shadow: 0 0 15px rgba(197, 176, 41, 0.15);
+}
+
+.md-typeset .grid:not(.cards) > ul > li > p:first-child {
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--cc-fg);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+/* ---- SVG ICONS (used in Reach out section) ---- */
+.md-typeset .twemoji.lg {
+  height: 1.3em;
+  vertical-align: -0.25em;
+  margin-right: 0.4rem;
+  fill: var(--cc-warning-yellow);
+}
+
+.md-typeset .twemoji.lg.middle {
+  height: 2rem;
+  fill: var(--cc-warning-yellow);
+}
+
+/* ---- MD Material's icon rendering in grid.cards — amp up the amber ---- */
+.md-typeset .grid.cards .lg {
+  color: var(--cc-warning-yellow);
+}
+
+.md-typeset .grid.cards .lg svg {
+  fill: var(--cc-warning-yellow);
+}
+
