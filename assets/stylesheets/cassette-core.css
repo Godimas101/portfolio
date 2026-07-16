@@ -1,0 +1,481 @@
+/* ========================================================================
+   Direction A — CASSETTE CORE
+   Aliens franchise industrial. Warm amber phosphor. Worn edges.
+   Nostromo-era terminal UI. Warning stripes. Grid paper.
+   ======================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Space+Mono:wght@400;700&display=swap');
+
+/* ---- COLOR TOKENS ---- */
+:root {
+  --cc-black: #0a0a0a;
+  --cc-bg: #0f0e0a;
+  --cc-amber: #c5b029;
+  --cc-amber-glow: #e6cf3a;
+  --cc-amber-dim: #7a6e19;
+  --cc-rust: #d4a574;
+  --cc-gray: #7A8081;
+  --cc-gray-warm: #a29da3;
+  --cc-warning-yellow: #f4c430;
+  --cc-warning-stripe: #1a1608;
+  --cc-fg: #d8d0b8;
+  --cc-fg-dim: #8a836e;
+}
+
+/* Force the cassette scheme */
+[data-md-color-scheme="cassette"],
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: var(--cc-amber);
+  --md-primary-fg-color--light: var(--cc-amber-glow);
+  --md-primary-fg-color--dark: var(--cc-amber-dim);
+  --md-primary-bg-color: var(--cc-black);
+  --md-primary-bg-color--light: var(--cc-fg);
+
+  --md-accent-fg-color: var(--cc-rust);
+  --md-accent-fg-color--transparent: rgba(212, 165, 116, 0.1);
+  --md-accent-bg-color: var(--cc-black);
+
+  --md-default-bg-color: var(--cc-bg);
+  --md-default-bg-color--light: #14120c;
+  --md-default-fg-color: var(--cc-fg);
+  --md-default-fg-color--light: var(--cc-fg-dim);
+  --md-default-fg-color--lighter: var(--cc-fg-dim);
+  --md-default-fg-color--lightest: var(--cc-gray);
+
+  --md-code-fg-color: var(--cc-amber);
+  --md-code-bg-color: #14120c;
+
+  --md-typeset-color: var(--cc-fg);
+  --md-typeset-a-color: var(--cc-amber);
+  --md-typeset-a-color--hover: var(--cc-amber-glow);
+}
+
+/* ---- BASE BODY ---- */
+body {
+  background: var(--cc-bg);
+  color: var(--cc-fg);
+  font-family: 'Share Tech Mono', 'Space Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+/* ---- SCANLINES (whole viewport overlay) ---- */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg,
+    transparent 50%,
+    rgba(0, 0, 0, 0.18) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+}
+
+/* ---- HEADINGS — condensed industrial ---- */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  color: var(--cc-amber);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(197, 176, 41, 0.35);
+}
+
+.md-typeset h1 {
+  font-size: 3.2rem;
+  border-bottom: 2px solid var(--cc-amber-dim);
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+/* Corner brackets on H1 */
+.md-typeset h1::before {
+  content: '◤';
+  position: absolute;
+  left: -1.2rem;
+  top: 0.2rem;
+  color: var(--cc-warning-yellow);
+  font-size: 0.9rem;
+}
+
+.md-typeset h2 {
+  font-size: 2rem;
+  color: var(--cc-rust);
+  margin-top: 3rem;
+  padding-left: 1rem;
+  border-left: 4px solid var(--cc-warning-yellow);
+}
+
+.md-typeset h3 {
+  color: var(--cc-fg);
+  font-size: 1.4rem;
+}
+
+/* ---- HEADER + NAV — armored terminal top-bar ---- */
+.md-header {
+  background: linear-gradient(180deg, #14120c 0%, #0a0908 100%);
+  border-bottom: 1px solid var(--cc-amber-dim);
+  box-shadow: 0 2px 0 0 var(--cc-warning-yellow);
+}
+
+.md-header__title {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.1em;
+  color: var(--cc-amber);
+}
+
+/* ---- TABS ---- */
+.md-tabs {
+  background: var(--cc-black);
+  border-bottom: 2px solid var(--cc-amber-dim);
+}
+
+.md-tabs__link {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.15em;
+  color: var(--cc-fg-dim);
+  opacity: 1;
+}
+
+.md-tabs__link--active {
+  color: var(--cc-amber);
+  border-bottom: 3px solid var(--cc-warning-yellow);
+}
+
+/* ---- GRID CARDS ---- */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid > ul > li {
+  background: #14120c;
+  border: 1px solid var(--cc-amber-dim);
+  border-radius: 0;
+  padding: 1.4rem 1.4rem 1.2rem;
+  position: relative;
+  transition: all 0.25s ease;
+  box-shadow: inset 0 0 40px rgba(197, 176, 41, 0.04);
+}
+
+/* Corner brackets on cards */
+.md-typeset .grid.cards > ul > li::before,
+.md-typeset .grid.cards > ul > li::after,
+.md-typeset .grid > ul > li::before,
+.md-typeset .grid > ul > li::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--cc-warning-yellow);
+  border-style: solid;
+  border-width: 0;
+}
+
+.md-typeset .grid.cards > ul > li::before,
+.md-typeset .grid > ul > li::before {
+  top: 4px;
+  left: 4px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+
+.md-typeset .grid.cards > ul > li::after,
+.md-typeset .grid > ul > li::after {
+  bottom: 4px;
+  right: 4px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid > ul > li:hover {
+  border-color: var(--cc-amber);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 40px rgba(197, 176, 41, 0.08),
+    0 4px 20px rgba(197, 176, 41, 0.15);
+}
+
+.md-typeset .grid.cards > ul > li > p:first-child,
+.md-typeset .grid > ul > li > p:first-child {
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--cc-amber);
+  font-size: 1.3rem;
+  letter-spacing: 0.06em;
+}
+
+/* ---- LINKS ---- */
+.md-typeset a {
+  color: var(--cc-amber);
+  border-bottom: 1px dashed var(--cc-amber-dim);
+  text-decoration: none;
+}
+
+.md-typeset a:hover {
+  color: var(--cc-amber-glow);
+  border-bottom-style: solid;
+  border-bottom-color: var(--cc-warning-yellow);
+  text-shadow: 0 0 8px rgba(230, 207, 58, 0.5);
+}
+
+/* ---- CODE BLOCKS — terminal cassette output ---- */
+.md-typeset code,
+.md-typeset pre {
+  font-family: 'Space Mono', 'Share Tech Mono', monospace;
+  background: #08070a;
+  color: var(--cc-amber);
+  border: 1px solid var(--cc-amber-dim);
+  border-radius: 0;
+}
+
+.md-typeset pre::before {
+  content: '// SYSTEM.OUT ›';
+  display: block;
+  padding: 0.4rem 0.8rem;
+  background: var(--cc-warning-yellow);
+  color: var(--cc-black);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  margin: -1em -1em 0.5em;
+}
+
+/* ---- TABLES — data-log style ---- */
+.md-typeset table {
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #14120c;
+  border: 1px solid var(--cc-amber-dim);
+}
+
+.md-typeset th {
+  background: var(--cc-warning-yellow);
+  color: var(--cc-black);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--cc-black);
+}
+
+.md-typeset td {
+  border-bottom: 1px dashed var(--cc-amber-dim);
+  color: var(--cc-fg);
+}
+
+/* ---- STAT GRID (custom class for the hero stats) ---- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.md-typeset .stat {
+  display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.6rem;
+  color: var(--cc-amber-glow);
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(230, 207, 58, 0.5);
+  margin-right: 0.4rem;
+}
+
+/* ---- WARNING STRIPE ACCENTS ---- */
+.md-typeset hr {
+  border: none;
+  height: 8px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--cc-warning-yellow),
+    var(--cc-warning-yellow) 12px,
+    var(--cc-black) 12px,
+    var(--cc-black) 24px
+  );
+  margin: 3rem 0;
+}
+
+/* ---- BLOCKQUOTES — logbook entries ---- */
+.md-typeset blockquote {
+  border-left: 4px solid var(--cc-warning-yellow);
+  background: rgba(197, 176, 41, 0.04);
+  color: var(--cc-rust);
+  font-style: italic;
+  padding: 0.8rem 1.2rem;
+}
+
+.md-typeset blockquote::before {
+  content: '// ';
+  color: var(--cc-amber-dim);
+  font-style: normal;
+}
+
+/* ---- FOOTER ---- */
+.md-footer,
+.md-footer-meta {
+  background: var(--cc-black);
+  color: var(--cc-fg-dim);
+  border-top: 2px solid var(--cc-warning-yellow);
+}
+
+/* ---- SEARCH ---- */
+.md-search__input {
+  background: rgba(197, 176, 41, 0.08);
+  color: var(--cc-fg);
+  border: 1px solid var(--cc-amber-dim);
+}
+
+.md-search__input::placeholder {
+  color: var(--cc-fg-dim);
+}
+
+/* ---- BUTTONS (used inside Major Projects cards for link-outs) ---- */
+.md-typeset .md-button {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cc-amber);
+  background: transparent;
+  border: 1px solid var(--cc-amber-dim);
+  border-radius: 0;
+  padding: 0.35rem 1rem;
+  margin: 0.4rem 0.4rem 0.4rem 0;
+  transition: all 0.2s ease;
+  text-shadow: 0 0 8px rgba(197, 176, 41, 0.25);
+  position: relative;
+}
+
+.md-typeset .md-button::before {
+  content: '▸';
+  margin-right: 0.4rem;
+  color: var(--cc-warning-yellow);
+}
+
+.md-typeset .md-button:hover {
+  color: var(--cc-black);
+  background: var(--cc-amber);
+  border-color: var(--cc-amber);
+  text-shadow: none;
+  box-shadow: 0 0 20px rgba(197, 176, 41, 0.35);
+}
+
+.md-typeset .md-button:hover::before {
+  color: var(--cc-black);
+}
+
+.md-typeset .md-button--primary {
+  background: var(--cc-warning-yellow);
+  color: var(--cc-black);
+  border-color: var(--cc-warning-yellow);
+  font-weight: 700;
+  text-shadow: none;
+}
+
+.md-typeset .md-button--primary::before {
+  color: var(--cc-black);
+}
+
+.md-typeset .md-button--primary:hover {
+  background: var(--cc-amber-glow);
+  border-color: var(--cc-amber-glow);
+  box-shadow: 0 0 25px rgba(230, 207, 58, 0.5);
+}
+
+/* ---- UNDER CONSTRUCTION TAG (Star Org card) ---- */
+.md-typeset .construction-tag {
+  display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--cc-black);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--cc-warning-yellow),
+    var(--cc-warning-yellow) 6px,
+    var(--cc-black) 6px,
+    var(--cc-black) 12px
+  );
+  padding: 0.2rem 0.7rem 0.15rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  border: 1px solid var(--cc-warning-yellow);
+  text-shadow: 1px 1px 0 var(--cc-warning-yellow), -1px -1px 0 var(--cc-warning-yellow);
+  animation: hazard-pulse 3s ease-in-out infinite;
+}
+
+@keyframes hazard-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.7; }
+}
+
+/* ---- SMALL GRID (Standalone tools + Reach out sections) ---- */
+/* Distinguishes from .grid.cards (large cards) — these are compact link rows */
+.md-typeset .grid:not(.cards) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.md-typeset .grid:not(.cards) > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: contents;
+}
+
+.md-typeset .grid:not(.cards) > ul > li {
+  background: rgba(197, 176, 41, 0.04);
+  border: 1px solid var(--cc-amber-dim);
+  border-radius: 0;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  position: relative;
+  transition: all 0.2s ease;
+  min-height: unset;
+  box-shadow: none;
+}
+
+/* Remove the corner brackets from small-grid cards — reserve those for major projects */
+.md-typeset .grid:not(.cards) > ul > li::before,
+.md-typeset .grid:not(.cards) > ul > li::after {
+  display: none;
+}
+
+.md-typeset .grid:not(.cards) > ul > li:hover {
+  border-color: var(--cc-amber);
+  background: rgba(197, 176, 41, 0.08);
+  transform: none;
+  box-shadow: 0 0 15px rgba(197, 176, 41, 0.15);
+}
+
+.md-typeset .grid:not(.cards) > ul > li > p:first-child {
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--cc-fg);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+/* ---- SVG ICONS (used in Reach out section) ---- */
+.md-typeset .twemoji.lg {
+  height: 1.3em;
+  vertical-align: -0.25em;
+  margin-right: 0.4rem;
+  fill: var(--cc-warning-yellow);
+}
+
+.md-typeset .twemoji.lg.middle {
+  height: 2rem;
+  fill: var(--cc-warning-yellow);
+}
+
+/* ---- MD Material's icon rendering in grid.cards — amp up the amber ---- */
+.md-typeset .grid.cards .lg {
+  color: var(--cc-warning-yellow);
+}
+
+.md-typeset .grid.cards .lg svg {
+  fill: var(--cc-warning-yellow);
+}
+
