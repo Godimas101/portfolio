@@ -9,15 +9,15 @@ hide:
 
 <div class="grid cards" markdown>
 
--   :material-controller-classic:{ .lg .middle } **First AAA — Splinter Cell: Blacklist**
+-   :material-controller-classic:{ .lg .middle } **Splinter Cell: Blacklist**
 
     ---
 
     *Ubisoft Toronto · 2012–2013 · Metacritic 82–84*
 
-    Multiplayer testing (COOP + PVP) on a high-profile Tom Clancy release. Consistently top bug producer on the multiplayer team while maintaining ticket quality. Collaborated with international QA teams daily. Delivered clear, concise, complete bug documentation under demanding deadlines.
+    My first AAA release. Multiplayer testing (COOP + PVP) on a high-profile Tom Clancy title. Consistently top bug producer on the multiplayer team while maintaining ticket quality. Collaborated with international QA teams daily. Delivered clear, concise, complete bug documentation under demanding deadlines.
 
--   :material-notebook-heart:{ .lg .middle } **Captain's Log — solo build → HR company-wide**
+-   :material-notebook-heart:{ .lg .middle } **Captain's Log**
 
     ---
 
@@ -27,13 +27,13 @@ hide:
 
     The design decision that won HR: the app does not write your performance review. It assembles source material and instructs the receiving LLM to produce point-form suggestions with week numbers and Jira refs — never draft answers. The human still writes the review, which is the entire point.
 
--   :material-swap-horizontal-bold:{ .lg .middle } **Phaser → Pixi engine migration lead**
+-   :material-swap-horizontal-bold:{ .lg .middle } **Phaser → Pixi engine migration**
 
     ---
 
     *Prodigy Education · RPG · 2020–2024*
 
-    Inherited a struggling engine-conversion project from another team. Reorganized and coordinated 6 internal testers through to completion. Built the workflow pipeline for the developers and the project-management system for status tracking. Turned a stuck project into an organized delivery.
+    Inherited a struggling engine-conversion project from another team and led it to the finish line. Reorganized and coordinated 6 internal testers through to completion. Built the workflow pipeline for the developers and the project-management system for status tracking. Turned a stuck project into an organized delivery.
 
 -   :material-transit-connection-variant:{ .lg .middle } **TestRail → AIO Tests migration**
 
@@ -49,7 +49,7 @@ hide:
 
     *Prodigy Education · 2025–2026 · 5 languages*
 
-    End-to-end QA leadership across full Spanish + Portuguese, partial Japanese / German / French. Managed 3 outsource testers and a 50-freelancer TestIO team through release. Test plans, bug triage, cross-department stakeholders, initial public release planning.
+    End-to-end QA leadership on Prodigy RPG localization. Spanish and Portuguese shipped to production. Japanese, German, and French work completed and ready — currently unreleased pending business decisions. Managed 3 outsource testers and a 50-freelancer TestIO team through release. Test plans, bug triage, cross-department stakeholders, initial public release planning.
 
 -   :material-account-multiple-plus:{ .lg .middle } **Producer on three teams at once**
 
@@ -59,7 +59,7 @@ hide:
 
     Associate Producer directing three development teams (12+ people total) across two cities, sharing a single designer. Established the process foundations the growing studio ran on for years — Atlassian + Google-centric workflow standards for agile delivery on HTML5 games.
 
--   :material-hammer-screwdriver:{ .lg .middle } **Introduced Jira to Big Viking Games**
+-   :material-hammer-screwdriver:{ .lg .middle } **Introduced Jira to Big Viking**
 
     ---
 
