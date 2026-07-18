@@ -56,6 +56,7 @@ hide:
     - Your journal entries for the chosen period
     - The OKRs you're being reviewed against
     - A list of Jira tickets you completed in that window
+    - Your self review questions
     - **Baked-in instructions telling the receiving LLM what to do with all of it** — read the source material, produce point-form notes cross-referenced to specific week numbers and ticket links, and NEVER draft answers on your behalf
 
     You paste the doc into whichever LLM you use. Out comes a series of notes cross-referenced to your own journal, tickets, and Confluence docs. You pick the points that matter, jump back to source when you need to remind yourself of specifics, and write. A 4-day slog turns into a single sitting.
@@ -80,7 +81,7 @@ hide:
 
     - **Converting QA Wolf tests to QA Cub** — reading the intent of the legacy spec, then rewriting it against our own helper library. ~14 Bonfire Spire quest coverage migrations shipped so far.
     - **Authoring net-new coverage** for gaps QA Wolf never touched. Four Firefly Forest quest specs shipped in the current sprint.
-    - **Expanding the shared helper library** so future test authors don't reinvent the wheel — battle-tolerant world-item collection, guide-hand click hardening, FTUE preempt handling, `waitForAny` primitive. Roughly ten shared helper tickets across the year, all non-breaking to existing callers.
+    - **Expanding the shared helper library** so future test authors don't reinvent the wheel — battle-tolerant world-item collection, guide-hand click hardening, FTUE preempt handling, `waitForAny` primitive, and the list keeps growing!
     - **Reducing flakes at the root cause level.** When a test breaks, the fix goes in the shared helper that all tests use — not a workaround pasted into the one broken spec. Two game-source bugs filed and fixed through this pattern.
 
     **How it works under the hood.** Playwright drives a Chromium runner against a self-hosted staging build of the game. Prodigy Math is a PixiJS canvas game (not a DOM app), so Playwright can't inspect sprites directly. The game maintains a shadow HTML "mock scene graph" mirroring the visible PIXI hierarchy, keyed by each sprite's name attribute — Playwright queries that mirror. Every check refreshes the mirror before reading so nothing asserts on stale state.
@@ -111,7 +112,7 @@ hide:
 
     Outperformed the paid patch notes extensions we evaluated — more focused output, easier customization of distribution, runs reliably with zero intervention.
 
--   :material-account-wrench:{ .lg .middle } **Company Atlassian admin (6+ years)**
+-   :material-account-wrench:{ .lg .middle } **Company Atlassian admin**
 
     ---
 
