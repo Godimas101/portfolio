@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Wins
 
 **Career moments worth remembering.** 15+ years across mobile, social, indie, AAA console, live service, and now AI-assisted QA.

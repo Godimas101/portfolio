@@ -8,13 +8,21 @@ hide:
 
 **QA leader by day. Automation obsessive by night. Games modder for the joy of it.**
 
-I build weirdly practical things: game mods, aerospace-news automations, and AI-assisted tools that turn future-me's repetitive nonsense into something an LLM does while I sleep.
-
-Some of it ships to 1,300+ Steam Workshop subscribers. Some of it runs 24/7 on a self-hosted VPS. Some of it just makes my life less annoying. All of it is public (or was designed to be shareable).
+I build weirdly practical things: game mods, aerospace-news automations, and AI-assisted tools that turn future-me's repetitive nonsense into something an LLM does while I sleep. Some of it ships to 1,300+ Steam Workshop subscribers. Some of it runs 24/7 on a self-hosted VPS. Some of it just makes my life less annoying. All of it is public (or was designed to be shareable).
 
 ---
 
-## Major projects
+## How this all got made
+
+I have a learning disability. If you've caught a typo in something I've written, that's the tell — it's how my typing works, not a signal about how I think. For most of my career, the gap between *"idea I can see clearly in my head"* and *"thing I can actually build"* was wide enough to trap most of my ideas inside it.
+
+Working with Claude changed that. Every project on this page sat as a vague shape for years before it became real. That leapfrog is what the whole page is really about.
+
+The other thing I didn't expect: **iterating on *how* we work together has been as much fun as what we've built.** The workflow is a project too — memory systems, ticket-shape conventions, review patterns, orchestration primitives. Every improvement compounds across every other project.
+
+---
+
+## Major personal projects
 
 <div class="grid cards" markdown>
 
@@ -27,7 +35,7 @@ Some of it ships to 1,300+ Steam Workshop subscribers. Some of it runs 24/7 on a
     [:material-web: thecanadian.space](https://thecanadian.space){ .md-button .md-button--primary }
     [:material-github: The-Canadian-Space](https://github.com/The-Canadian-Space){ .md-button }
 
--   :material-package-variant:{ .lg .middle } **Space Engineers + MechWarrior 5 Mods**
+-   :material-package-variant:{ .lg .middle } **Game mods**
 
     ---
 

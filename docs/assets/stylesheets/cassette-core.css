@@ -126,22 +126,61 @@ body::before {
   color: var(--cc-amber);
 }
 
-/* ---- TABS ---- */
+/* ---- TABS — cassette selector chiclets ---- */
 .md-tabs {
   background: var(--cc-black);
   border-bottom: 2px solid var(--cc-amber-dim);
 }
 
+.md-tabs__list {
+  gap: 0.35rem;
+}
+
+.md-tabs__item {
+  height: 2.4rem;
+  padding: 0.35rem 0 0;
+}
+
 .md-tabs__link {
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 0.15em;
-  color: var(--cc-fg-dim);
+  font-size: 0.95rem;
+  color: var(--cc-fg);
   opacity: 1;
+  padding: 0.35rem 1rem 0.35rem;
+  margin: 0;
+  border: 1px solid var(--cc-amber-dim);
+  border-bottom: none;
+  background: rgba(197, 176, 41, 0.04);
+  transition: all 0.15s ease;
+  text-shadow: 0 0 6px rgba(197, 176, 41, 0.15);
+  position: relative;
 }
 
-.md-tabs__link--active {
-  color: var(--cc-amber);
-  border-bottom: 3px solid var(--cc-warning-yellow);
+/* Hover: brighten border + background, small lift */
+.md-tabs__link:hover {
+  color: var(--cc-amber-glow);
+  border-color: var(--cc-amber);
+  background: rgba(197, 176, 41, 0.12);
+  text-shadow: 0 0 10px rgba(230, 207, 58, 0.4);
+}
+
+/* Active tab: filled amber chip, black text — reads unambiguously as "you are here" */
+.md-tabs__link--active,
+.md-tabs__item--active .md-tabs__link {
+  color: var(--cc-black) !important;
+  background: var(--cc-warning-yellow);
+  border-color: var(--cc-warning-yellow);
+  font-weight: 700;
+  text-shadow: none;
+  box-shadow: 0 0 12px rgba(244, 196, 48, 0.35);
+}
+
+.md-tabs__link--active:hover,
+.md-tabs__item--active .md-tabs__link:hover {
+  color: var(--cc-black) !important;
+  background: var(--cc-amber-glow);
+  border-color: var(--cc-amber-glow);
 }
 
 /* ---- GRID CARDS ---- */
@@ -343,6 +382,16 @@ body::before {
   transition: all 0.2s ease;
   text-shadow: 0 0 8px rgba(197, 176, 41, 0.25);
   position: relative;
+}
+
+/* Inside major-project cards: buttons stack full-width, matching the hazard-stripe
+   line under the card title. Uniform width + rhythm reads cleaner. */
+.md-typeset .grid.cards > ul > li .md-button {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0 0;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .md-typeset .md-button::before {

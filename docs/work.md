@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Work
 
 **Current-day professional projects.** What I'm actually shipping in the day-job, roughly in order of impact.
@@ -114,3 +119,20 @@
     Designed integrated Jira ↔ Confluence ↔ Git ↔ Slack automations still in production.
 
 </div>
+
+---
+
+## The stack
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white" alt="Jira" />
+  <img src="https://img.shields.io/badge/Confluence-172B4D?style=for-the-badge&logo=confluence&logoColor=white" alt="Confluence" />
+  <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white" alt="Slack" />
+  <img src="https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white" alt="Playwright" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
+  <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions" />
+  <img src="https://img.shields.io/badge/Claude-DC7B4C?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude" />
+</p>
+
+**Also fluent in:** Automation for Jira, Automation for Confluence, AIO Tests REST API, TestRail (migration lead), Sentry MCP, Figma MCP, GitHub API (gh CLI), Slack API, WordPress REST API, VS Code Extension API, MCP server integration patterns, outsource + vendor management (QA Wolf, TestIO).

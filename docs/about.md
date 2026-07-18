@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # About
 
 **Chris Carpenter** — Toronto, Canada.
