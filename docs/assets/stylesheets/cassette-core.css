@@ -278,12 +278,41 @@ body::before {
   margin: -1em -1em 0.5em;
 }
 
-/* ---- TABLES — data-log style ---- */
-.md-typeset table {
+/* ---- TABLES — data-log style ----
+   Credits page uses these for studio-by-studio game lists. All tables share:
+   - Same max width (unified visual rhythm regardless of row count)
+   - Centered horizontally on the page
+   - Fixed column layout so Title / Role widths stay consistent across tables
+   The scrollwrap Material inserts around markdown tables also needs centering
+   so the width constraint actually shows on wide viewports. */
+.md-typeset table:not([class]) {
   border-collapse: separate;
   border-spacing: 0;
   background: #14120c;
   border: 1px solid var(--cc-amber-dim);
+  width: 100%;
+  max-width: 620px;
+  margin: 1.5rem auto;
+  table-layout: fixed;
+}
+
+/* Center the Material scrollwrap so the max-width'd table sits mid-page */
+.md-typeset .md-typeset__scrollwrap,
+.md-typeset .md-typeset__table {
+  display: flex;
+  justify-content: center;
+}
+
+/* Unified column widths across every table:
+   Title takes 70% (needs room for full game names), Role takes 30%. */
+.md-typeset table:not([class]) th:first-child,
+.md-typeset table:not([class]) td:first-child {
+  width: 70%;
+}
+
+.md-typeset table:not([class]) th:last-child,
+.md-typeset table:not([class]) td:last-child {
+  width: 30%;
 }
 
 .md-typeset th {
@@ -298,6 +327,7 @@ body::before {
 .md-typeset td {
   border-bottom: 1px dashed var(--cc-amber-dim);
   color: var(--cc-fg);
+  word-wrap: break-word;
 }
 
 /* ---- STAT GRID (custom class for the hero stats) ---- */
