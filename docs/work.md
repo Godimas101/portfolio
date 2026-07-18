@@ -34,6 +34,57 @@
 
 ---
 
+## Captain's Log
+
+<div class="grid cards" markdown>
+
+-   :material-notebook-heart:{ .lg .middle } **Journaling → performance-review prep, macOS-native**
+
+    ---
+
+    Solo build with an AI collaborator (Claude) over roughly 5 weeks. Tauri 2 + Rust + Svelte. Empty repo to **company-wide Prodigy HR adoption**. ~47,000 lines of application source, 554 automated tests, 110 commits, 21 shipped phases, 8.8 MB signed DMG.
+
+    **What it is:** menu-bar tray app that captures weekly work notes as plain markdown on disk, then assembles that material into review-prep documents for whichever LLM you point at them. No SMTP, no OAuth, no vendor lock-in — your journal is a folder of normal markdown files.
+
+    **The design decision that won HR adoption:** the app does not write your performance review. Phase 5's Prep-Self-Review wizard assembles source material and instructs the receiving LLM to produce point-form suggestions with week numbers and Jira ticket links — never draft answers. The human still writes the review, which is the entire point of a performance review.
+
+    **Pillars worth naming:**
+    - **Markdown-on-disk as the single source of truth** — Slack-grade rich text in the editor; canonical CommonMark on disk. Storage format and display format are independent axes.
+    - **Failure as a value** — enrichment / mail / reminder subsystems return graceful-degrade empty results instead of `Result::Err`. Five failure modes collapsed into one path.
+    - **Sidecar JSON posture** — always rebuildable from the markdown; atomic-rename writes; delete `.metadata/` and the app rebuilds itself.
+
+    **Collaboration patterns that stood out:** altitude-shift interrupts when the debugging loop stops responding, adversarial verification as a first-class build step (skeptics beat self-review), plans-out-then-build with locked design memories that survived multi-session compactions.
+
+</div>
+
+---
+
+## QA Cub
+
+<div class="grid cards" markdown>
+
+-   :material-test-tube:{ .lg .middle } **Rebuilding Prodigy's E2E test infrastructure**
+
+    ---
+
+    Ongoing Playwright rebuild replacing legacy QA Wolf coverage across Prodigy Math (RPG). ~472 test targets in the tracker; migration + net-new authoring streams running in parallel.
+
+    **Personal contribution across the year:**
+    - **~14 Bonfire Spire quest migrations** — QA Wolf → Playwright, running clean on staging
+    - **4 Firefly Forest net-new specs** authored under MAGE-1876 (Q7 mandrakes, Q9 Gerald, Q10 flute, Q11 Forest Thief)
+    - **~10 shared helper tickets** — battle-tolerant world-item collection, guide-hand click hardening, FTUE preempt, `waitForAny` primitive. All non-breaking to existing callers.
+    - **2 game-source bugs filed + fixed** via test infrastructure work (Worker Slime `nameParent`; Highlight Arrow `.name` rename unblocking 8 downstream call sites)
+
+    **Two patterns that changed the workflow:**
+    - **Batch migration skill** — coordinator subagent spawns N workers, each doing one migration end-to-end in isolated worktrees, reports pass/block. Cut migration wall-clock time by ~5× for the Bonfire batch.
+    - **Helper smoke-test convention** — every new helper in `e2e/helpers/` gets a sibling smoke test tagged `@helper-smoke` before PR review. MINIMUM / THOROUGH / ADVERSARIAL tiers, plus a documented "async boot state" gate that solves the `signUpAsNewGameStudent` timing trap.
+
+    **Class-of-bug philosophy:** the Firefly Q7 flake could have been fixed with `waitForTimeout(5000)` before every click. Instead, chased root cause — stale mock scene graph + inference from absence — and shipped a reusable helper. Adopted by another author within 24 hours of merge for a completely different zone.
+
+</div>
+
+---
+
 ## Also on the bench
 
 <div class="grid cards" markdown>
