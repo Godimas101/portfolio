@@ -14,11 +14,15 @@ I build weirdly practical things: game mods, aerospace-news automations, and AI-
 
 ## How this all got made
 
-I have a learning disability. If you've caught a typo in something I've written, that's the tell — it's how my typing works, not a signal about how I think. For most of my career, the gap between *"idea I can see clearly in my head"* and *"thing I can actually build"* was wide enough to trap most of my ideas inside it.
+Almost everything I work on in my personal time is AI-assisted. Much of what I do at work is too.
 
-Working with Claude changed that. Every project on this page sat as a vague shape for years before it became real. That leapfrog is what the whole page is really about.
+I have a learning disability that tends to get in the way when I'm translating ideas into bits and bytes. If we ever chat on [Discord](https://discord.com/users/235753132594823169), you'll probably notice. Believe me — it's just as annoying to me as it is to you.
 
-The other thing I didn't expect: **iterating on *how* we work together has been as much fun as what we've built.** The workflow is a project too — memory systems, ticket-shape conventions, review patterns, orchestration primitives. Every improvement compounds across every other project.
+AI tooling has more or less let me leapfrog that. **Huge** impact on [what I'm able to contribute at work](work.md), and on what I get to build here at home. Genuinely life-changing, in a very positive way.
+
+I tend to work in layers. MVP first, then add a little here, tweak a little there. Documentation, slideshow presentations, gift ideas, workflows — same rhythm across all of it. The more I work with AI, the more I experiment with *how* I work, and the more I get done.
+
+I know AI isn't for everyone. I for one am having a blast with it.
 
 ---
 
