@@ -12,6 +12,16 @@
 
     Multiplayer testing (COOP + PVP) on a high-profile Tom Clancy release. Consistently top bug producer on the multiplayer team while maintaining ticket quality. Collaborated with international QA teams daily. Delivered clear, concise, complete bug documentation under demanding deadlines.
 
+-   :material-notebook-heart:{ .lg .middle } **Captain's Log — solo build → HR company-wide**
+
+    ---
+
+    *Prodigy Education · June–July 2026 · 5 weeks*
+
+    5-week solo build with an AI collaborator from empty repo to **Prodigy HR adopting it company-wide** for performance-review prep. Tauri 2 + Rust + Svelte macOS tray app. ~47,000 lines of application source, 554 automated tests, 21 shipped phases.
+
+    The design decision that won HR: the app does not write your performance review. It assembles source material and instructs the receiving LLM to produce point-form suggestions with week numbers and Jira refs — never draft answers. The human still writes the review, which is the entire point.
+
 -   :material-swap-horizontal-bold:{ .lg .middle } **Phaser → Pixi engine migration lead**
 
     ---
