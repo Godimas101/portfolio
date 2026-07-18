@@ -306,13 +306,19 @@ body::before {
 }
 
 /* On the Credits page (the only page with markdown tables), studio-name H2s
-   sit above their tables. Use :has() to align the H2 with the 620px table
-   below it — same max-width + margin auto = same horizontal position. */
+   sit above their tables as a unified centered column. Override the general
+   h2 rule's padding-left + border-left (which would offset the H2 text from
+   the table's left edge and break the column feel). Swap the side-line
+   accent for a bottom-line so the H2 reads as "column header" instead of
+   "section divider". */
 .md-typeset h2:has(+ table) {
   max-width: 620px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 3rem auto 0;
   box-sizing: border-box;
+  padding-left: 0;
+  padding-bottom: 0.4rem;
+  border-left: none;
+  border-bottom: 2px solid var(--cc-amber-dim);
 }
 
 .md-typeset th {
