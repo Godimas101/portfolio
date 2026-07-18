@@ -279,32 +279,22 @@ body::before {
 }
 
 /* ---- TABLES — data-log style ----
-   Credits page uses these for studio-by-studio game lists. All tables share:
-   - Same max width (unified visual rhythm regardless of row count)
-   - Centered horizontally on the page
-   - Fixed column layout so Title / Role widths stay consistent across tables
-   The scrollwrap Material inserts around markdown tables also needs centering
-   so the width constraint actually shows on wide viewports. */
+   Credits page uses these for studio-by-studio game lists. All tables share
+   the same explicit width so the 14-row Big Viking table and 1-row Ubisoft
+   table read as visually related, not chaotic. Column widths locked at 70/30
+   so 'Title' and 'Role' stay aligned across every table. */
 .md-typeset table:not([class]) {
   border-collapse: separate;
   border-spacing: 0;
   background: #14120c;
   border: 1px solid var(--cc-amber-dim);
-  width: 100%;
-  max-width: 620px;
-  margin: 1.5rem auto;
-  table-layout: fixed;
+  display: table;                /* explicit — no lingering flex weirdness */
+  width: 620px;                  /* explicit width so every table matches */
+  max-width: 100%;               /* still responsive on narrow viewports */
+  margin: 1.5rem auto;           /* center on the page */
+  table-layout: fixed;           /* column widths respected regardless of content */
 }
 
-/* Center the Material scrollwrap so the max-width'd table sits mid-page */
-.md-typeset .md-typeset__scrollwrap,
-.md-typeset .md-typeset__table {
-  display: flex;
-  justify-content: center;
-}
-
-/* Unified column widths across every table:
-   Title takes 70% (needs room for full game names), Role takes 30%. */
 .md-typeset table:not([class]) th:first-child,
 .md-typeset table:not([class]) td:first-child {
   width: 70%;
@@ -313,6 +303,16 @@ body::before {
 .md-typeset table:not([class]) th:last-child,
 .md-typeset table:not([class]) td:last-child {
   width: 30%;
+}
+
+/* On the Credits page (the only page with markdown tables), studio-name H2s
+   sit above their tables. Use :has() to align the H2 with the 620px table
+   below it — same max-width + margin auto = same horizontal position. */
+.md-typeset h2:has(+ table) {
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
 .md-typeset th {
