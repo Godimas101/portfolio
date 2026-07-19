@@ -126,6 +126,24 @@ body::before {
   color: var(--cc-amber);
 }
 
+/* Header buttons (mobile hamburger, search, logo) — Material's default color
+   comes from --md-primary-bg-color which we've set to black for the tab-chip
+   design. That makes these SVG icons invisible against the dark header.
+   Explicit amber override, with a slight glow on hover so they read as
+   tappable. */
+.md-header__button {
+  color: var(--cc-amber);
+}
+
+.md-header__button:hover,
+.md-header__button:focus {
+  color: var(--cc-amber-glow);
+}
+
+.md-header__button svg {
+  fill: currentColor;
+}
+
 /* ---- TABS — cassette selector chiclets ---- */
 .md-tabs {
   background: var(--cc-black);
