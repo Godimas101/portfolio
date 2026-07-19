@@ -62,3 +62,16 @@ hide:
 | Title | Role |
 |---|---|
 | Terra Builder: Moon | Modeler / Animator |
+
+---
+
+## Reach out
+
+<div class="grid" markdown>
+
+- :material-linkedin:{ .lg } **[LinkedIn](https://www.linkedin.com/in/rustygear/)** — work stuff
+- :fontawesome-brands-patreon:{ .lg } **[Patreon](https://patreon.com/Godimas101)** — the running project log
+- :fontawesome-brands-discord:{ .lg } **[Discord](https://discord.com/users/235753132594823169)** — DM me directly
+- :material-email:{ .lg } **[Email](mailto:rustygear@hotmail.com)** — old school
+
+</div>

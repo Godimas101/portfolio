@@ -30,10 +30,17 @@ Modding, automation, and AI-assisted tool-building. Three main threads:
 - **Verify against live systems, not against docs.** Docs drift; the live workflow is truth.
 - **AI-assisted, not AI-generated.** Claude Code is a genuinely load-bearing collaborator. This portfolio, and much of the infrastructure it describes, was built together.
 
+*If it saves you time, you're welcome. If it doesn't, tell me why — I'd rather know.*
+
+---
+
 ## Reach out
 
-- **LinkedIn:** [rustygear](https://www.linkedin.com/in/rustygear/) — for work-related conversations
-- **Patreon:** [patreon.com/Godimas101](https://patreon.com/Godimas101) — for behind-the-scenes updates
-- **Email:** [rustygear@hotmail.com](mailto:rustygear@hotmail.com) — for anything you'd rather not route through LinkedIn
+<div class="grid" markdown>
 
-*If it saves you time, you're welcome. If it doesn't, tell me why — I'd rather know.*
+- :material-linkedin:{ .lg } **[LinkedIn](https://www.linkedin.com/in/rustygear/)** — work stuff
+- :fontawesome-brands-patreon:{ .lg } **[Patreon](https://patreon.com/Godimas101)** — the running project log
+- :fontawesome-brands-discord:{ .lg } **[Discord](https://discord.com/users/235753132594823169)** — DM me directly
+- :material-email:{ .lg } **[Email](mailto:rustygear@hotmail.com)** — old school
+
+</div>

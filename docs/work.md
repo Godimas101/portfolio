@@ -138,3 +138,16 @@ hide:
 </p>
 
 **Also fluent in:** Automation for Jira, Automation for Confluence, AIO Tests REST API, TestRail (migration lead), Sentry MCP, Figma MCP, GitHub API (gh CLI), Slack API, WordPress REST API, VS Code Extension API, MCP server integration patterns, outsource + vendor management (QA Wolf, TestIO).
+
+---
+
+## Reach out
+
+<div class="grid" markdown>
+
+- :material-linkedin:{ .lg } **[LinkedIn](https://www.linkedin.com/in/rustygear/)** — work stuff
+- :fontawesome-brands-patreon:{ .lg } **[Patreon](https://patreon.com/Godimas101)** — the running project log
+- :fontawesome-brands-discord:{ .lg } **[Discord](https://discord.com/users/235753132594823169)** — DM me directly
+- :material-email:{ .lg } **[Email](mailto:rustygear@hotmail.com)** — old school
+
+</div>
