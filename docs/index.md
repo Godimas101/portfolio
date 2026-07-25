@@ -67,6 +67,7 @@ I know AI isn't for everyone. I for one am having a blast with it.
 
 - **[universal-image-converter](https://github.com/Godimas101/universal-image-converter)** — Windows tool for SE modders. Image → DDS textures + pasteable LCD art.
 - **[universal-audio-converter](https://github.com/Godimas101/universal-audio-converter)** — Full SE audio pipeline: convert, edit, generate SBC files.
+- **[gdc-sound](https://github.com/Godimas101/gdc-sound)** — Windows app to search the free Sonniss GDC game-audio bundles. Full-text search + waveform audition over 7,000+ sound effects.
 - **[claude-usage-monitor](https://github.com/Godimas101/claude-usage-monitor)** — Windows widget for Claude Code session tracking. Amber phosphor aesthetic.
 - **[se-claude-skill](https://github.com/Godimas101/se-claude-skill)** — Space Engineers modding skill for Claude Code.
 
