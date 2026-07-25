@@ -35,15 +35,15 @@ hide:
 
     End-to-end QA leadership on Prodigy RPG localization. Spanish and Portuguese shipped to production. Japanese, German, and French work completed and ready — currently unreleased pending business decisions. Managed 3 outsource testers and a 50-freelancer TestIO team through release. Test plans, bug triage, cross-department stakeholders, initial public release planning.
 
--   :material-source-branch-check:{ .lg .middle } **Prodigy's second game — workflow blueprint**
+-   :material-home:{ .lg .middle } **Prodigy village builder**
 
     ---
 
     *Prodigy Education · April 2021 – November 2024*
 
-    Applied to and got onto Prodigy's second-ever game. Given a fresh start free of standard company practices, I built an automation-first team workflow that later became the model other Prodigy teams adopted: ticket templates, auto-assembled bug-triage lists + scheduled triage meetings, deep git integration moving tickets across boards on PR status, and the patch-notes bot all originated here.
+    Applied to Prodigy's second-ever game and got the spot. The team had latitude to break from company standards, so I built an automation-first workflow from scratch — ticket templates, auto-assembled bug-triage lists with scheduled meetings, git integration that moved Jira tickets across boards on PR status, and the origin of the patch-notes bot. Every one of those patterns later got adopted by other Prodigy projects.
 
-    Led QA on multiple features including the multiplayer system. Also stood up a Jira help desk as a side project that grew into a company-wide function — now just two of us admin it, with more onboarding planned.
+    QA lead on the multiplayer system. Kept my Atlassian admin work going in parallel and stood up a Jira help desk on the side that grew into a company-wide function.
 
 -   :material-swap-horizontal-bold:{ .lg .middle } **Phaser → Pixi engine migration**
 
