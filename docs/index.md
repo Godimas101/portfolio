@@ -34,7 +34,7 @@ I know AI isn't for everyone. I for one am having a blast with it.
 
     ---
 
-    Automated aerospace newsroom. n8n orchestrates 39 workflows across 7 blog streams, an AI editor pass, cost tracking, and social publishing. Self-hosted on OVH. Runs 24/7.
+    Automated aerospace newsroom. n8n orchestrates 28 workflows across 7 blog streams: AI authoring, SEO and fact-checking, cost tracking, and social publishing. Self-hosted on OVH. Runs 24/7.
 
     [:material-web: thecanadian.space](https://thecanadian.space){ .md-button .md-button--primary }
     [:material-github: The-Canadian-Space](https://github.com/The-Canadian-Space){ .md-button }
