@@ -33,7 +33,7 @@ hide:
 
     *Prodigy Education · 2025–2026 · 5 languages*
 
-    End-to-end QA leadership on Prodigy RPG localization. Spanish and Portuguese shipped to production. Japanese, German, and French work completed and ready — currently unreleased pending business decisions. Managed 3 outsource testers and a 50-freelancer TestIO team through release. Test plans, bug triage, cross-department stakeholders, initial public release planning.
+    End-to-end QA leadership on Prodigy RPG localization. Spanish and Portuguese shipped to production. Japanese, German, and French work completed and ready — currently unreleased pending business decisions. Managed a team of 8 outsource testers and a 50-freelancer TestIO team through release. Test plans, bug triage, cross-department stakeholders, initial public release planning.
 
 -   :material-home:{ .lg .middle } **Prodigy village builder**
 
