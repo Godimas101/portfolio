@@ -29,7 +29,7 @@ hide:
     - `/qa-translation-analysis` — multilingual QA (pt-BR, es, fr, de, ja) against a custom Prodigy glossary
     - `/qa-sentry-analysis` — pulls errors, classifies against known patterns, offers to file
 
-    **Impact:** test case writing collapsed 2–3 days → ~30 min. 5+ hrs/week/QAer on PR review + bug filing. 5 P1 issues caught pre-QA via `/qa-pr-analysis`. Multiple major RPG releases run end-to-end. Localization QA is now the team standard.
+    **Impact:** test case writing collapsed 2–3 days → ~30 min. 5+ hrs/week/QAer on PR review + bug filing. Several P1 issues caught pre-QA via `/qa-pr-analysis`. Multiple major RPG releases run end-to-end. Localization QA is now the team standard.
 
     **Philosophy:** the suite handles typing + pattern-matching. The QAers do the investigation. AI as force-multiplier, not replacement.
 
@@ -79,8 +79,8 @@ hide:
 
     **What I contribute:**
 
-    - **Converting QA Wolf tests to QA Cub** — reading the intent of the legacy spec, then rewriting it against our own helper library. ~14 Bonfire Spire quest coverage migrations shipped so far.
-    - **Authoring net-new coverage** for gaps QA Wolf never touched. Four Firefly Forest quest specs shipped in the current sprint.
+    - **Converting QA Wolf tests to QA Cub** — reading the intent of the legacy spec, then rewriting it against our own helper library. About 60 quest coverage migrations shipped so far.
+    - **Authoring net-new coverage** for gaps QA Wolf never touched. 100+ new specs shipped so far.
     - **Expanding the shared helper library** so future test authors don't reinvent the wheel — battle-tolerant world-item collection, guide-hand click hardening, FTUE preempt handling, `waitForAny` primitive, and the list keeps growing!
     - **Reducing flakes at the root cause level.** When a test breaks, the fix goes in the shared helper that all tests use — not a workaround pasted into the one broken spec. Two game-source bugs filed and fixed through this pattern.
 

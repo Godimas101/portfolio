@@ -8,7 +8,7 @@ hide:
 
 **QA leader by day. Automation obsessive by night. Games modder for the joy of it.**
 
-I build weirdly practical things: game mods, aerospace-news automations, and AI-assisted tools that turn future-me's repetitive nonsense into something an LLM does while I sleep. Some of it ships to 1,300+ Steam Workshop subscribers. Some of it runs 24/7 on a self-hosted VPS. Some of it just makes my life less annoying. All of it is public (or was designed to be shareable).
+I build weirdly practical things: game mods, aerospace-news automations, and AI-assisted tools that turn future-me's repetitive nonsense into something an LLM does while I sleep. Some of it ships to 3,000+ Steam Workshop subscribers. Some of it runs 24/7 on a self-hosted VPS. Some of it just makes my life less annoying. All of it is public (or was designed to be shareable).
 
 ---
 
@@ -43,7 +43,7 @@ I know AI isn't for everyone. I for one am having a blast with it.
 
     ---
 
-    Published mod collection under the `gitpush-mod` GitHub org. Flagship: **InfoLCD Apex Update** — 1,335+ Steam Workshop subscribers. Also NJFL family, Tiered Build & Repair, SG Core bundle, MW5 ZuluBetterHeroes Reforged, and the R13verGrrl pilot mod in development.
+    Published mod collection under the `gitpush-mod` GitHub org. Flagship: **InfoLCD Apex Update** — 3,000+ Steam Workshop subscribers. Also NJFL family, Tiered Build & Repair, SG Core bundle, MW5 ZuluBetterHeroes Reforged, and the R13verGrrl pilot mod in development.
 
     [:material-steam: Steam Workshop](https://steamcommunity.com/id/godimas/myworkshopfiles){ .md-button .md-button--primary }
     [:material-github: gitpush-mod](https://github.com/gitpush-mod){ .md-button }
