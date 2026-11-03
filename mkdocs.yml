@@ -4,12 +4,14 @@ site_author: Chris Carpenter (Godimas101)
 site_url: https://portfolio.godimas.dev
 
 # Chris picked Direction A (Cassette Core) on 2026-07-16. This base config
-# now uses that CSS directly. `mkdocs serve` from repo root "just works".
+# now uses that CSS directly. `zensical serve` from repo root "just works".
 # Directions B (Cyberpunk) + C (Hybrid) are stashed under `stashed/` for
 # reference — they can be re-promoted anytime.
 
 theme:
   name: material
+  # Zensical (portfolio#4): the classic variant keeps Material for MkDocs' look.
+  variant: classic
   features:
     - navigation.instant
     - navigation.tracking
@@ -34,6 +36,11 @@ theme:
 
 extra_css:
   - assets/stylesheets/cassette-core.css
+
+# Zensical's lightbox ignores the glightbox options below and uses its own
+# defaults. They match, except draggable, which this file sets back.
+extra_javascript:
+  - assets/javascripts/glightbox-options.js
 
 nav:
   - Home: index.md

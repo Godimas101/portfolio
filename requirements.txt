@@ -1,5 +1,7 @@
-mkdocs-material>=9.5.0
-mkdocs-material-extensions>=1.3.0
-mkdocs-minify-plugin>=0.8.0
-mkdocs-glightbox>=0.4.0
-pymdown-extensions>=10.0
+# Zensical builds the site (portfolio#4). It reads mkdocs.yml as it is and brings its own
+# Markdown, pymdown-extensions and image lightbox, so it replaces mkdocs-material and its plugins.
+# Pinned exactly: Zensical is still 0.0.x and releases often, so bump it on purpose.
+zensical==0.0.73
+
+# Pushes site/ to the gh-pages branch. `mkdocs gh-deploy` used it; Zensical has no gh-deploy.
+ghp-import==2.1.0

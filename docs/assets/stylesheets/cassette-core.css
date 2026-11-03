@@ -48,6 +48,13 @@
   --md-typeset-color: var(--cc-fg);
   --md-typeset-a-color: var(--cc-amber);
   --md-typeset-a-color--hover: var(--cc-amber-glow);
+
+  /* Zensical's search dialog reads these as RGB triplets. It ships light
+     values, with dark ones only for slate. */
+  --color-foreground: 216 208 184;     /* --cc-fg */
+  --color-background: 20 18 12;        /* #14120c, the header's top */
+  --color-background-subtle: 26 22 8;  /* --cc-warning-stripe */
+  --color-backdrop: 10 10 10;          /* --cc-black */
 }
 
 /* ---- BASE BODY ---- */
@@ -419,6 +426,39 @@ body::before {
 
 .md-search__input::placeholder {
   color: var(--cc-fg-dim);
+}
+
+/* Zensical opens search from a header button (Ctrl+K) instead of an input.
+   Its label and magnifier take --md-primary-bg-color (black here), like the
+   header buttons above, so they get the same treatment as the old box. */
+.md-search__button {
+  color: var(--cc-fg-dim);
+  background-color: rgba(197, 176, 41, 0.08);
+  border: 1px solid var(--cc-amber-dim);
+  border-radius: 0;
+}
+
+.md-search__button::before {
+  background-color: var(--cc-amber);
+}
+
+.md-search__button:hover,
+.md-search__button:focus {
+  color: var(--cc-fg);
+  background-color: rgba(197, 176, 41, 0.16);
+}
+
+/* The old box's width. */
+@media screen and (min-width: 60em) {
+  .md-search__button {
+    width: 11.7rem;
+  }
+}
+
+/* This site has no repo link, so drop the empty slot Zensical keeps for one.
+   Search then sits at the right edge, where the old box was. */
+.md-header__source:not(:has(*)) {
+  display: none;
 }
 
 /* ---- BUTTONS (used inside Major Projects cards for link-outs) ---- */
