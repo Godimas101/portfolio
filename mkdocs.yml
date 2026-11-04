@@ -1,21 +1,27 @@
 site_name: Chris Carpenter
 site_description: Portfolio — SE + MW5 mods, The Canadian Space, AI-assisted automation
 site_author: Chris Carpenter (Godimas101)
-site_url: https://portfolio.godimas.dev
+site_url: https://godimas101.github.io/portfolio/
 
-# Chris picked Direction A (Cassette Core) on 2026-07-16. This base config
-# now uses that CSS directly. `zensical serve` from repo root "just works".
-# Directions B (Cyberpunk) + C (Hybrid) are stashed under `stashed/` for
-# reference — they can be re-promoted anytime.
+# The look is Phosphor Console (portfolio#7): an amber CRT, built from one
+# stylesheet and self-hosted fonts. `zensical serve` from the repo root works.
+# The older directions stay under `directions/` and `stashed/` for reference.
+
+# Files that stay in the repo but off the site: the older directions'
+# stylesheets and their preview images.
+exclude_docs: |
+  assets/stylesheets/*.css
+  !assets/stylesheets/phosphor.css
+  assets/images/direction-previews/
 
 theme:
   name: material
   # Zensical (portfolio#4): the classic variant keeps Material for MkDocs' look.
   variant: classic
+  custom_dir: overrides
   features:
     - navigation.instant
     - navigation.tracking
-    - navigation.tabs
     - navigation.top
     - toc.follow
     - search.suggest
@@ -24,23 +30,18 @@ theme:
     - content.tooltips
     - content.tabs.link
   palette:
-    - scheme: cassette
+    - scheme: phosphor
       primary: custom
       accent: custom
-  font:
-    text: Share Tech Mono
-    code: Space Mono
+  # Fonts are self-hosted from docs/assets/fonts, so no Google Fonts request.
+  font: false
+  logo: assets/images/mark.svg
+  favicon: assets/images/favicon.png
   icon:
-    logo: material/tape-drive
     repo: fontawesome/brands/github
 
 extra_css:
-  - assets/stylesheets/cassette-core.css
-
-# Zensical's lightbox ignores the glightbox options below and uses its own
-# defaults. They match, except draggable, which this file sets back.
-extra_javascript:
-  - assets/javascripts/glightbox-options.js
+  - assets/stylesheets/phosphor.css
 
 nav:
   - Home: index.md
@@ -51,15 +52,6 @@ nav:
 
 plugins:
   - search
-  - glightbox:
-      touchNavigation: true
-      loop: false
-      effect: zoom
-      slide_effect: slide
-      width: 100%
-      height: auto
-      zoomable: true
-      draggable: false
   - minify:
       minify_html: true
 

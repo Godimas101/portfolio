@@ -5,7 +5,8 @@ Chris Carpenter's portfolio site. Static site built with Zensical (Material for 
 ## What lives here
 
 - **`mkdocs.yml`** — base site configuration (theme, nav, plugins). Zensical reads it as it is.
-- **`docs/`** — content (markdown pages, images, custom CSS)
+- **`docs/`** — content (markdown pages, images, fonts). The live look is Phosphor Console: `docs/assets/stylesheets/phosphor.css`, with self-hosted OFL fonts in `docs/assets/fonts/`. No franchise names go on the site, CSS comments included.
+- **`overrides/`** — the two template overrides: the 404 page, and the browser title with the link preview tags
 - **`directions/`** — three aesthetic direction candidates for the initial pick:
   - **`A_cassette/`** — Cassette Core (Aliens franchise — worn industrial, amber/orange, Nostromo vibe)
   - **`B_cyberpunk/`** — Cyberpunk (2077 UI — neon glow, cyan+magenta, glitch)
