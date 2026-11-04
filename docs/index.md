@@ -11,7 +11,7 @@ I build weirdly practical things: game mods, aerospace-news automations, and AI-
 
 <dl class="readout">
   <div><dt>Steam Workshop subscribers</dt><dd>3,000+</dd></div>
-  <div><dt>n8n workflows</dt><dd>28</dd></div>
+  <div><dt>Newsroom n8n workflows</dt><dd>29</dd></div>
   <div><dt>On a self-hosted VPS</dt><dd>24/7</dd></div>
   <div><dt>Career years</dt><dd>15+</dd></div>
 </dl>
@@ -40,7 +40,7 @@ I know AI isn't for everyone. I for one am having a blast with it.
 
     ---
 
-    Automated aerospace newsroom. n8n orchestrates 28 workflows across 7 blog streams: AI authoring, SEO and fact-checking, cost tracking, and social publishing. Self-hosted on OVH. Runs 24/7.
+    Automated aerospace newsroom. n8n orchestrates 29 workflows across 7 blog streams: AI authoring, SEO and fact-checking, cost tracking, and social publishing. Self-hosted on OVH. Runs 24/7.
 
     [:material-web: thecanadian.space](https://thecanadian.space){ .md-button .md-button--primary }
     [:material-github: The-Canadian-Space](https://github.com/The-Canadian-Space){ .md-button }
@@ -60,8 +60,8 @@ I know AI isn't for everyone. I for one am having a blast with it.
 
     Star Citizen organization platform — event management, member coordination, org-facing tooling. Currently in development.
 
-    [:material-book-open-page-variant: wiki.starorg.tools](https://wiki.starorg.tools/){ .md-button .md-button--primary }
-    [:material-github: SC-ORG-BOT wiki](https://github.com/voidput/SC-ORG-BOT/wiki){ .md-button }
+    [:material-web: dev.starorg.tools](https://dev.starorg.tools/){ .md-button .md-button--primary }
+    [:material-book-open-page-variant: wiki.starorg.tools](https://wiki.starorg.tools/){ .md-button }
 
 </div>
 

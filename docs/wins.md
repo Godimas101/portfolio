@@ -73,7 +73,7 @@ hide:
 
     ---
 
-    *Ubisoft Toronto · 2012–2013 · Metacritic 82–84*
+    *Ubisoft Toronto · 2012–2013 · Metacritic 82–84 on PS3, Xbox 360 and PC*
 
     My first AAA release. Multiplayer testing (COOP + PVP) on a high-profile Tom Clancy title. Consistently top bug producer on the multiplayer team while maintaining ticket quality. Collaborated with international QA teams daily. Delivered clear, concise, complete bug documentation under demanding deadlines.
 

@@ -14,7 +14,7 @@ Modding, automation, and AI-assisted tool-building. Three main threads:
 
 **Space Engineers + MechWarrior 5 mods.** Published under the [`gitpush-mod`](https://github.com/gitpush-mod) GitHub org, distributed via Steam Workshop. Most-subscribed: InfoLCD Apex Update (3,000+ subs).
 
-**The Canadian Space.** A live aerospace newsroom that publishes to [thecanadian.space](https://thecanadian.space). 28 n8n workflows, 7 blog streams, AI authoring, cost tracking, social publishing. Runs 24/7 on an OVH VPS. Every post gets an SEO and fact-check pass before it lands as a draft I review; the daily stream now goes through a dedicated pipeline that checks every claim against the articles the author read, and the other streams are moving over one at a time. Publishing since October 2025.
+**The Canadian Space.** A live aerospace newsroom that publishes to [thecanadian.space](https://thecanadian.space). 29 n8n workflows, 7 blog streams, AI authoring, cost tracking, social publishing. Runs 24/7 on an OVH VPS. Every post gets an SEO and fact-check pass before it lands as a draft I review; the daily stream now goes through a dedicated pipeline that checks every claim against the articles the author read, and the other streams are moving over one at a time. Publishing since October 2025.
 
 **AI-assisted tools + Claude skills.** Claude Usage Monitor (desktop widget), universal SE modders' converters (image + audio), Claude skills for SE modding, an SE Discord bridge fork with a watchdog fix. All in production use.
 
