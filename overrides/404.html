@@ -2,6 +2,9 @@
   The 404 page, in the site's voice. Zensical's own version is one heading.
 -#}
 {% extends "main.html" %}
+{% block htmltitle %}
+  <title>Page not found - {{ config.site_name }}</title>
+{% endblock %}
 {% block content %}
   <h1>404</h1>
   <p>No record at this address.</p>

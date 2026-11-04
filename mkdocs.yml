@@ -21,7 +21,6 @@ theme:
   custom_dir: overrides
   features:
     - navigation.instant
-    - navigation.tracking
     - navigation.top
     - toc.follow
     - search.suggest
@@ -36,12 +35,16 @@ theme:
   # Fonts are self-hosted from docs/assets/fonts, so no Google Fonts request.
   font: false
   logo: assets/images/mark.svg
-  favicon: assets/images/favicon.png
+  # A new name, because returning visitors' browsers keep the old icon by its URL.
+  favicon: assets/images/icon-amber.png
   icon:
     repo: fontawesome/brands/github
 
 extra_css:
   - assets/stylesheets/phosphor.css
+
+extra_javascript:
+  - assets/javascripts/phosphor.js
 
 nav:
   - Home: index.md

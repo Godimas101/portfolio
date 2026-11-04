@@ -2,7 +2,8 @@
 
    Three rules hold this sheet together:
    - Effects never sit over reading text. The scanlines, the grid and the
-     vignette live behind the page or on solid amber plates.
+     vignette live behind the page or on solid amber plates. The page title
+     is display type, so its glyphs carry the scan rows on purpose.
    - Nothing loops. The title cursor blinks four times, then holds still.
    - Colours come from the tokens below. Test any new one at 4.5:1. */
 
@@ -28,11 +29,10 @@
   --bright: #ffb300;
   --main: #e8a020;
   --label: #c98c2a;
-  --read: #f3d9a4;   /* reading text: softer than the label amber, 13:1 on --crt */
+  --read: #f3d9a4;   /* reading text: softer than the label amber, 14:1 on --crt */
 
   /* Lines */
   --edge: #4b3412;
-  --rule: #e8a02040;
   --rule-strong: #e8a02085;
   --ghost: #2a1c08;
 
@@ -153,16 +153,22 @@ body::after {
   box-shadow: none;
 }
 
-.md-header--shadow {
-  box-shadow: none;
-}
-
 .md-header__title {
   font: 400 0.55rem/2.4rem var(--f-display);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--main);
   text-shadow: 0 0 6px var(--glow-soft);
+}
+
+/* On a narrow screen with no room for one line, the name wraps instead of losing letters. */
+@media screen and (max-width: 44.9em) {
+  .md-header__topic:first-child {
+    align-items: center;
+    height: 100%;
+    line-height: 1.3;
+    white-space: normal;
+  }
 }
 
 .md-header__button,
@@ -290,16 +296,19 @@ body::after {
 }
 
 @media screen and (min-width: 76.25em) {
-  /* One line runs from the title bar to the footer, as on the reference. */
+  /* One line runs from the title bar to the footer, as on the reference.
+     The theme sets its scroll-spy from the gap above the grid, so the gap
+     stays and the whole column is pulled up over it. With no gap, a link to
+     a heading marks the heading before it in "On this page". */
   .md-main {
     display: flex;
     flex-direction: column;
+    margin-top: -1.5rem;
   }
 
   .md-main__inner {
     flex: 1 0 auto;
     width: 100%;
-    margin-top: 0;
   }
 
   .md-sidebar {
@@ -329,10 +338,29 @@ body::after {
   }
 }
 
-@media screen and (max-width: 76.234em) {
+@media screen and (max-width: 76.234375em) {
+  /* A closed drawer is out of the tab order. It hides once it has slid away. */
   .md-sidebar--primary {
+    visibility: hidden;
     background: var(--crt);
     border-right: 1px solid var(--edge);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s, visibility 0s 0.25s;
+  }
+
+  [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary {
+    visibility: visible;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s, visibility 0s;
+  }
+
+  /* So is the drawer's "On this page" panel, until it's opened. */
+  .md-nav__toggle ~ .md-nav {
+    visibility: hidden;
+    transition: transform 0.25s cubic-bezier(0.8, 0, 0.6, 1), opacity 125ms 50ms, visibility 0s 0.25s;
+  }
+
+  .md-nav__toggle:checked ~ .md-nav {
+    visibility: inherit;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 125ms 125ms, visibility 0s;
   }
 
   .md-nav--primary .md-nav__title[for="__drawer"] {
@@ -347,6 +375,23 @@ body::after {
   .md-nav--primary .md-nav__title .md-logo img {
     width: 1.1rem;
     height: 1.1rem;
+  }
+
+  /* phosphor.js swaps the theme's labels for buttons. These keep a label's box. */
+  button.md-nav__link,
+  button.md-nav__title {
+    width: 100%;
+    text-align: left;
+  }
+
+  button.md-nav__title {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  /* This title fills the drawer's width, so its ring has to sit inside it. */
+  .md-nav--primary .md-nav__title[for="__toc"]:focus-visible {
+    outline-offset: -3px;
   }
 
   .md-nav--primary .md-nav__item {
@@ -376,7 +421,7 @@ body::after {
     .md-sidebar--primary .md-sidebar__inner {
       animation: read-progress linear both;
       animation-timeline: scroll(root block);
-      counter-reset: read-pct var(--read-pct);
+      counter-reset: read-pct round(nearest, var(--read-pct));  /* WebKit animates it as a fraction */
     }
 
     .md-sidebar--primary .md-sidebar__inner::after {
@@ -661,9 +706,10 @@ body::after {
 }
 
 /* ---- FIGURES ---- */
+/* Columns are measured in rems, so enlarged text gets fewer, wider plates. */
 .md-typeset .readout {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
   gap: 8px;
   margin: 1.4rem 0 0;
 }
@@ -674,14 +720,16 @@ body::after {
   justify-content: flex-end;
   gap: 0.45rem;
   padding: 0.8rem 0.8rem 0.7rem;
+  container-type: inline-size;
 }
 
+/* VT323's six-character figure fits its plate at 41cqi. Past that it wraps. */
 .md-typeset .readout dd {
   margin: 0;
   color: var(--bright);
-  font: 400 clamp(2.2rem, 4.6vw, 3.3rem)/0.8 var(--f-read);
+  font: 400 min(clamp(2.2rem, 4.6vw, 3.3rem), 41cqi)/0.8 var(--f-read);
   text-shadow: 0 0 2px var(--glow), 0 0 14px var(--glow-soft);
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 
 .md-typeset .readout dt {
@@ -694,7 +742,7 @@ body::after {
 
 @media screen and (max-width: 44.9em) {
   .md-typeset .readout {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, max(6.5rem, calc(50% - 4px))), 1fr));
   }
 }
 
@@ -876,6 +924,11 @@ body::after {
   text-transform: uppercase;
 }
 
+/* The theme only fades a hidden button, which leaves it in the tab order. */
+.md-top[hidden] {
+  visibility: hidden;
+}
+
 .md-top:hover,
 .md-top:focus {
   background: var(--crt);
@@ -936,6 +989,23 @@ body::after {
   body::after {
     display: none;
   }
+
+  /* Fills are gone in this mode, so the current page gets a box of its own. */
+  .md-nav--primary .md-nav__item--active > .md-nav__link {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+  }
+
+  .md-typeset .grid.cards > ul > li,
+  .md-typeset .readout > div {
+    border: 1px solid CanvasText;
+    clip-path: none;
+  }
+
+  .md-typeset hr {
+    height: 0;
+    border-top: 1px solid CanvasText;
+  }
 }
 
 /* ---- PRINT: ink on paper ---- */
@@ -975,6 +1045,7 @@ body::after {
     background: none;
     color: #000;
     padding-left: 0;
+    break-after: avoid;
   }
 
   .md-typeset .grid.cards > ul > li,
@@ -983,6 +1054,16 @@ body::after {
   .md-typeset .readout > div::before {
     break-inside: avoid;
     clip-path: none;
+  }
+
+  /* A card alone in its grid can fill a page, so it may split. Its title stays with its text. */
+  .md-typeset .grid.cards > ul > li:only-child {
+    break-inside: auto;
+  }
+
+  .md-typeset .grid.cards > ul > li > p:first-child,
+  .md-typeset .grid.cards > ul > li > hr {
+    break-after: avoid;
   }
 
   .md-typeset hr {
