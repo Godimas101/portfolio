@@ -241,6 +241,13 @@ body::after {
   counter-reset: rail;
 }
 
+/* The theme snaps these lists as they scroll. They're short enough not to need it,
+   and in one Chromium 156 build a focused link in a snapped list crashes the tab
+   if a resize hides it. Released Chrome and Edge are fine. */
+.md-nav__link {
+  scroll-snap-align: none;
+}
+
 .md-nav--primary .md-nav__list > .md-nav__item {
   counter-increment: rail;
 }
