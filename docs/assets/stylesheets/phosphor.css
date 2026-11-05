@@ -1030,6 +1030,8 @@ body::after {
     --edge: #999;
     --rule-strong: #999;
     --scan: none;
+    --glow: transparent;
+    --glow-soft: transparent;
   }
 
   body::before,

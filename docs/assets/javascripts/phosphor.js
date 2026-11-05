@@ -87,9 +87,13 @@
   });
 
   // A window that widens leaves the drawer behind, so nothing may stay shut off.
+  // The panel's toggle is set, not clicked: a click would pull focus to its opener.
   [drawerWidth, panelWidth].forEach((width) => width.addEventListener("change", () => {
     const toggle = panelToggle();
-    if (toggle && toggle.checked) toggle.click();
+    if (toggle && toggle.checked) {
+      toggle.checked = false;
+      syncPanel(false);
+    }
     if (drawer.checked && !drawerWidth.matches) drawer.click();
   }));
 
