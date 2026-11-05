@@ -1,0 +1,1082 @@
+/* Phosphor Console: an amber CRT, the portfolio's look (portfolio#7).
+
+   Three rules hold this sheet together:
+   - Effects never sit over reading text. The scanlines, the grid and the
+     vignette live behind the page or on solid amber plates. The page title
+     is display type, so its glyphs carry the scan rows on purpose.
+   - Nothing loops. The title cursor blinks four times, then holds still.
+   - Colours come from the tokens below. Test any new one at 4.5:1. */
+
+/* ---- FONTS (all SIL OFL 1.1; each folder holds its licence) ---- */
+@font-face { font-family: "Michroma"; src: url("../fonts/michroma/Michroma-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("../fonts/ibm-plex-mono/IBMPlexMono-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("../fonts/ibm-plex-mono/IBMPlexMono-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("../fonts/ibm-plex-mono/IBMPlexMono-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "VT323"; src: url("../fonts/vt323/VT323-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+
+/* ---- TOKENS ---- */
+:root {
+  color-scheme: dark;
+
+  /* Grounds */
+  --crt: #090909;
+  --crt-2: #100e09;
+  --crt-deep: #030303;
+  --plate: #110e09;
+
+  /* Amber, from brightest to dimmest */
+  --hot: #ffe6a8;
+  --bright: #ffb300;
+  --main: #e8a020;
+  --label: #c98c2a;
+  --read: #f3d9a4;   /* reading text: softer than the label amber, 14:1 on --crt */
+
+  /* Lines */
+  --edge: #4b3412;
+  --rule-strong: #e8a02085;
+  --ghost: #2a1c08;
+
+  /* Ink on amber plates, glow and the scanline shade */
+  --ink: #0b0805;
+  --glow: #ffb30099;
+  --glow-soft: #ffb30038;
+  --scan-d: #00000038;
+  --shade: #000000b3;
+
+  --f-display: "Michroma", "Segoe UI", system-ui, sans-serif;
+  --f-body: "IBM Plex Mono", Consolas, monospace;
+  --f-read: "VT323", Consolas, monospace;
+
+  --scan: repeating-linear-gradient(180deg, transparent 0 2px, var(--scan-d) 2px 3px);
+  --hazard: repeating-linear-gradient(-45deg, var(--bright) 0 4px, var(--crt) 4px 8px);
+  --cut: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  --cut-in: polygon(13.4px 0, 100% 0, 100% calc(100% - 13.4px), calc(100% - 13.4px) 100%, 0 100%, 0 13.4px);
+
+  --md-text-font: "IBM Plex Mono";
+  --md-code-font: "IBM Plex Mono";
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--label) var(--crt-2);
+}
+
+[data-md-color-scheme="phosphor"] {
+  --md-primary-fg-color: var(--crt);
+  --md-primary-fg-color--light: var(--crt-2);
+  --md-primary-fg-color--dark: var(--crt-deep);
+  --md-primary-bg-color: var(--main);
+  --md-primary-bg-color--light: var(--label);
+
+  --md-accent-fg-color: var(--bright);
+  --md-accent-fg-color--transparent: var(--glow-soft);
+  --md-accent-bg-color: var(--ink);
+
+  --md-default-bg-color: var(--crt);
+  --md-default-bg-color--light: var(--crt-2);
+  --md-default-fg-color: var(--read);
+  --md-default-fg-color--light: var(--label);
+  --md-default-fg-color--lighter: var(--label);
+  --md-default-fg-color--lightest: var(--edge);
+
+  --md-code-fg-color: var(--hot);
+  --md-code-bg-color: var(--crt-2);
+
+  --md-typeset-color: var(--read);
+  --md-typeset-a-color: var(--hot);
+
+  --md-footer-bg-color: var(--crt);
+  --md-footer-bg-color--dark: var(--crt);
+  --md-footer-fg-color: var(--main);
+  --md-footer-fg-color--light: var(--label);
+  --md-footer-fg-color--lighter: var(--label);
+
+  --md-shadow-z1: none;
+  --md-shadow-z2: none;
+  --md-shadow-z3: none;
+
+  /* Zensical's search dialog reads these as RGB triplets. */
+  --color-foreground: 255 230 168;       /* --hot: its fainter lines are this at 45-70% */
+  --color-background: 9 9 9;             /* --crt */
+  --color-background-subtle: 42 28 8;    /* --ghost */
+  --color-backdrop: 3 3 3;               /* --crt-deep */
+}
+
+/* ---- THE SCREEN: everything here sits behind the page ---- */
+body {
+  background: var(--crt);
+  color: var(--read);
+  font-family: var(--f-body);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    var(--scan),
+    linear-gradient(var(--ghost) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ghost) 1px, transparent 1px),
+    radial-gradient(120% 95% at 50% 42%, var(--plate) 0%, var(--crt) 58%, var(--crt-deep) 100%);
+  background-size: auto, 48px 48px, 48px 48px, auto;
+  background-position: 0 0, -1px -1px, -1px -1px, 0 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 96% 90% at 50% 48%, transparent 70%, var(--shade) 100%);
+  box-shadow: inset 0 0 28px 0 var(--shade);
+}
+
+::selection {
+  background: var(--bright);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 1px solid var(--bright);
+  outline-offset: 2px;
+}
+
+.md-grid {
+  max-width: 76rem;
+}
+
+/* ---- TITLE BAR ---- */
+.md-header {
+  background: var(--crt);
+  border-bottom: 1px solid var(--edge);
+  box-shadow: none;
+}
+
+.md-header__title {
+  font: 400 0.55rem/2.4rem var(--f-display);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--main);
+  text-shadow: 0 0 6px var(--glow-soft);
+}
+
+/* On a narrow screen with no room for one line, the name wraps instead of losing letters. */
+@media screen and (max-width: 44.9em) {
+  .md-header__topic:first-child {
+    align-items: center;
+    height: 100%;
+    line-height: 1.3;
+    white-space: normal;
+  }
+}
+
+.md-header__button,
+.md-header__button:hover {
+  color: var(--main);
+  opacity: 1;
+}
+
+.md-header__button.md-logo img {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.md-header__source:not(:has(*)) {
+  display: none;
+}
+
+/* One palette means no toggle, but its hidden radio still takes keyboard focus. */
+.md-header__option[data-md-component="palette"] {
+  display: none;
+}
+
+/* The search button keeps Zensical's magnifier and Ctrl+K hint. */
+.md-search__button {
+  color: var(--label);
+  background: var(--crt-2);
+  border: 1px solid var(--edge);
+  border-radius: 0;
+}
+
+.md-search__button::before {
+  background-color: var(--main);
+}
+
+.md-search__button:hover,
+.md-search__button:focus {
+  color: var(--hot);
+  background: var(--crt-2);
+  border-color: var(--main);
+}
+
+@media screen and (min-width: 60em) {
+  .md-search__button {
+    width: 10rem;
+    height: 1.6rem;
+    font: 400 0.55rem/1 var(--f-body);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  [dir="ltr"] .md-search__button {
+    padding-left: 2rem;
+  }
+
+  .md-search__button::before {
+    top: 0.3rem;
+  }
+
+  .md-search__button::after {
+    top: 0.42rem;
+  }
+}
+
+/* ---- NAV RAIL (the drawer on small screens) ---- */
+.md-nav {
+  font-size: 0.6rem;
+}
+
+.md-nav__list {
+  counter-reset: rail;
+}
+
+/* The theme snaps these lists as they scroll. They're short enough not to need it,
+   and in one Chromium 156 build a focused link in a snapped list crashes the tab
+   if a resize hides it. Released Chrome and Edge are fine. */
+.md-nav__link {
+  scroll-snap-align: none;
+}
+
+.md-nav--primary .md-nav__list > .md-nav__item {
+  counter-increment: rail;
+}
+
+.md-nav--primary .md-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 1.7rem;
+  margin: 0 0 3px;
+  padding: 0 0.5rem;
+  border-left: 2px solid transparent;
+  color: var(--label);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.md-nav--primary .md-nav__link::before {
+  content: counter(rail, decimal-leading-zero);
+  width: 1.1rem;
+  font-weight: 400;
+}
+
+.md-nav--primary .md-nav__link:hover,
+.md-nav--primary .md-nav__link:focus {
+  color: var(--hot);
+}
+
+.md-nav--primary .md-nav__item--active > .md-nav__link,
+.md-nav--primary .md-nav__item--active > .md-nav__link:hover,
+.md-nav--primary .md-nav__item--active > .md-nav__link:focus {
+  background: var(--scan), var(--main);
+  border-left-color: var(--hot);
+  color: var(--ink);
+}
+
+.md-nav--primary .md-nav__item--active > .md-nav__link .md-nav__icon::after {
+  background-color: var(--ink);
+}
+
+/* The page's headings inside the drawer are a list of their own: no numbers. */
+.md-nav--primary .md-nav--secondary .md-nav__link {
+  min-height: 0;
+  padding: 0.4rem 0.5rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.md-nav--primary .md-nav--secondary .md-nav__link::before {
+  content: none;
+}
+
+@media screen and (min-width: 76.25em) {
+  /* One line runs from the title bar to the footer, as on the reference.
+     The theme sets its scroll-spy from the gap above the grid, so the gap
+     stays and the whole column is pulled up over it. With no gap, a link to
+     a heading marks the heading before it in "On this page". */
+  .md-main {
+    display: flex;
+    flex-direction: column;
+    margin-top: -1.5rem;
+  }
+
+  .md-main__inner {
+    flex: 1 0 auto;
+    width: 100%;
+  }
+
+  .md-sidebar {
+    padding-top: 1.4rem;
+  }
+
+  .md-content__inner {
+    padding-top: 1.4rem;
+  }
+
+  .md-sidebar--primary .md-sidebar__inner::before {
+    content: "RECORD INDEX";
+    content: "RECORD INDEX" / "";
+    display: block;
+    margin: 0 0 0.6rem 0.6rem;
+    font: 600 0.55rem/1 var(--f-body);
+    letter-spacing: 0.2em;
+    color: var(--label);
+  }
+
+  .md-nav--primary > .md-nav__title {
+    display: none;
+  }
+
+  .md-content {
+    border-left: 1px solid var(--edge);
+  }
+}
+
+@media screen and (max-width: 76.234375em) {
+  /* A closed drawer is out of the tab order. It hides once it has slid away. */
+  .md-sidebar--primary {
+    visibility: hidden;
+    background: var(--crt);
+    border-right: 1px solid var(--edge);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s, visibility 0s 0.25s;
+  }
+
+  [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary {
+    visibility: visible;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s, visibility 0s;
+  }
+
+  /* So is the drawer's "On this page" panel, until it's opened. */
+  .md-nav__toggle ~ .md-nav {
+    visibility: hidden;
+    transition: transform 0.25s cubic-bezier(0.8, 0, 0.6, 1), opacity 125ms 50ms, visibility 0s 0.25s;
+  }
+
+  .md-nav__toggle:checked ~ .md-nav {
+    visibility: inherit;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 125ms 125ms, visibility 0s;
+  }
+
+  .md-nav--primary .md-nav__title[for="__drawer"] {
+    background: var(--crt);
+    border-bottom: 1px solid var(--edge);
+    font: 400 0.55rem/2.4rem var(--f-display);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--main);
+  }
+
+  .md-nav--primary .md-nav__title .md-logo img {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  /* phosphor.js swaps the theme's labels for buttons. These keep a label's box. */
+  button.md-nav__link,
+  button.md-nav__title {
+    width: 100%;
+    text-align: left;
+  }
+
+  button.md-nav__title {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  /* This title fills the drawer's width, so its ring has to sit inside it. */
+  .md-nav--primary .md-nav__title[for="__toc"]:focus-visible {
+    outline-offset: -3px;
+  }
+
+  .md-nav--primary .md-nav__item {
+    border-top: 0;
+  }
+
+  .md-nav--primary .md-nav__list {
+    padding: 0.5rem 0.5rem 0;
+  }
+}
+
+/* How far down the page the reader is, as a figure and a row of pips.
+   Browsers without scroll timelines simply don't show it. */
+@property --read-pct {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 100;  /* a page too short to scroll is fully read */
+}
+
+@keyframes read-progress {
+  from { --read-pct: 0; }
+  to { --read-pct: 100; }
+}
+
+@supports (animation-timeline: scroll()) {
+  @media screen and (min-width: 76.25em) and (prefers-reduced-motion: no-preference) {
+    .md-sidebar--primary .md-sidebar__inner {
+      animation: read-progress linear both;
+      animation-timeline: scroll(root block);
+      counter-reset: read-pct round(nearest, var(--read-pct));  /* WebKit animates it as a fraction */
+    }
+
+    .md-sidebar--primary .md-sidebar__inner::after {
+      content: "READ " counter(read-pct) "%";
+      content: "READ " counter(read-pct) "%" / "";
+      display: block;
+      margin: 1.1rem 0.8rem 0 0.6rem;
+      padding-bottom: 0.65rem;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 12px, var(--crt) 12px 16px) 0 100% / 100% 8px no-repeat,
+        linear-gradient(90deg, var(--main) calc(var(--read-pct) * 1%), var(--ghost) 0) 0 100% / 100% 8px no-repeat;
+      color: var(--hot);
+      font: 400 1.1rem/1 var(--f-read);
+      text-shadow: 0 0 2px var(--glow), 0 0 6px var(--glow-soft);
+    }
+  }
+}
+
+/* ---- RIGHT COLUMN: ON THIS PAGE ---- */
+.md-nav--secondary .md-nav__title {
+  background: none;
+  box-shadow: none;
+  color: var(--label);
+  font: 600 0.55rem/1.4 var(--f-body);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.md-nav--secondary .md-nav__link {
+  color: var(--label);
+  letter-spacing: 0.04em;
+}
+
+.md-nav--secondary .md-nav__link:hover,
+.md-nav--secondary .md-nav__link:focus,
+.md-nav--secondary .md-nav__link--active,
+.md-nav--secondary .md-nav__link--passed {
+  color: var(--hot);
+}
+
+/* ---- READING TEXT ---- */
+.md-typeset {
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--read);
+}
+
+.md-content__inner {
+  overflow-x: clip;
+  overflow-clip-margin: 6px;
+}
+
+.md-content__inner > p,
+.md-content__inner > ul:not(.chips),
+.md-content__inner > ol {
+  max-width: 84ch;
+}
+
+.md-typeset strong {
+  color: var(--hot);
+  font-weight: 600;
+}
+
+.md-typeset a {
+  color: var(--hot);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 3px;
+}
+
+.md-typeset a:hover,
+.md-typeset a:focus {
+  color: var(--bright);
+  text-decoration-color: currentColor;
+}
+
+.md-typeset ul {
+  list-style-type: square;
+}
+
+.md-typeset li::marker {
+  color: var(--main);
+}
+
+.md-typeset code {
+  background: var(--crt-2);
+  box-shadow: 0 0 0 1px var(--edge);
+  color: var(--hot);
+  border-radius: 0;
+  padding: 0 0.3em;
+  font-size: 0.92em;
+  word-break: break-word;
+}
+
+/* Page title: scan rows and a glow, with a kicker above and a block cursor after. */
+.md-typeset h1 {
+  margin: 0 0 1.1rem;
+  font: 400 clamp(0.9rem, 5.2vw, 2rem)/1.3 var(--f-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--main);
+  background: var(--scan), linear-gradient(var(--bright), var(--bright));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 7px var(--glow-soft)) drop-shadow(0 0 1px var(--glow));
+}
+
+.md-content__inner::before {
+  content: "PERSONNEL RECORD";
+  content: "PERSONNEL RECORD" / "";
+  display: block;
+  height: auto;
+  margin-bottom: 0.7rem;
+  font: 600 0.55rem/1 var(--f-body);
+  letter-spacing: 0.2em;
+  color: var(--label);
+}
+
+.md-typeset h1::after {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 0.85em;
+  margin-left: 0.3em;
+  vertical-align: -0.08em;
+  background: var(--hot);
+  box-shadow: 0 0 8px var(--glow);
+  animation: cursor 1s steps(1) 4;
+}
+
+@keyframes cursor {
+  0%, 84% { opacity: 1; }
+  85%, 100% { opacity: 0.18; }
+}
+
+.md-typeset h1 .headerlink {
+  display: none;
+}
+
+/* The line under the title. */
+.md-typeset h1 + p {
+  color: var(--hot);
+  font-size: 0.8rem;
+}
+
+/* Section headings are the solid amber tags. */
+.md-typeset h2 {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin: 2.4rem 0 1rem;
+  padding: 0.12rem 0.5rem;
+  background: var(--scan), var(--main);
+  color: var(--ink);
+  font: 600 0.62rem/1.5 var(--f-body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.md-typeset h2::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 100vw;
+  height: 1px;
+  background: var(--edge);
+}
+
+.md-typeset h2 .headerlink {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 1;
+  margin-left: 0.3rem;
+  padding: 0.12rem 0.3rem;
+  background: var(--crt);
+  color: var(--label);
+  text-decoration: none;
+}
+
+.md-typeset h3 {
+  margin: 1.6rem 0 0.6rem;
+  color: var(--main);
+  font: 600 0.65rem/1.4 var(--f-body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* A hazard band between sections. Inside a card, a plain rule. */
+.md-typeset hr {
+  height: 4px;
+  margin: 2.2rem 0 0;
+  border: 0;
+  background: var(--hazard);
+}
+
+.md-typeset .grid > ul > li > hr {
+  height: 1px;
+  margin: 0.7em 0;
+  background: var(--edge);
+}
+
+/* ---- PLATES: cut at the top-left and bottom-right ---- */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .readout > div {
+  position: relative;
+  isolation: isolate;
+  margin: 0;
+  padding: 0.8rem 1rem;
+  border: 0;
+  border-radius: 0;
+  background: var(--edge);
+  box-shadow: none;
+  clip-path: var(--cut);
+  transition: none;
+}
+
+.md-typeset .grid.cards > ul > li::before,
+.md-typeset .readout > div::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: linear-gradient(180deg, var(--plate) 0%, var(--crt) 100%);
+  clip-path: var(--cut-in);
+}
+
+.md-typeset .grid.cards > ul {
+  gap: 8px;
+}
+
+@media (hover: hover) {
+  .md-typeset .grid.cards > ul > li:hover {
+    background: var(--rule-strong);
+    box-shadow: none;
+  }
+}
+
+/* A card's title line: icon and bold words. */
+.md-typeset .grid.cards > ul > li > p:first-child {
+  margin: 0;
+  font-size: 0.65rem;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.md-typeset .grid.cards > ul > li > p:first-child strong {
+  color: var(--main);
+}
+
+.md-typeset .grid.cards > ul > li {
+  font-size: 0.7rem;
+}
+
+/* The date line under a card's title. */
+.md-typeset .grid.cards > ul > li > hr + p > em:first-child:last-child {
+  display: block;
+  color: var(--label);
+  font-size: 0.6rem;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.md-typeset .twemoji {
+  color: var(--main);
+}
+
+.md-typeset .twemoji.lg {
+  height: 1.3em;
+  width: 1.3em;
+  vertical-align: text-bottom;
+}
+
+.md-typeset .twemoji.lg svg {
+  max-height: 100%;
+  width: 100%;
+}
+
+/* ---- FIGURES ---- */
+/* Columns are measured in rems, so enlarged text gets fewer, wider plates. */
+.md-typeset .readout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
+  gap: 8px;
+  margin: 1.4rem 0 0;
+}
+
+.md-typeset .readout > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  padding: 0.8rem 0.8rem 0.7rem;
+  container-type: inline-size;
+}
+
+/* VT323's six-character figure fits its plate at 41cqi. Past that it wraps. */
+.md-typeset .readout dd {
+  margin: 0;
+  color: var(--bright);
+  font: 400 min(clamp(2.2rem, 4.6vw, 3.3rem), 41cqi)/0.8 var(--f-read);
+  text-shadow: 0 0 2px var(--glow), 0 0 14px var(--glow-soft);
+  overflow-wrap: anywhere;
+}
+
+.md-typeset .readout dt {
+  margin: 0;
+  color: var(--label);
+  font: 600 0.55rem/1.35 var(--f-body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 44.9em) {
+  .md-typeset .readout {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, max(6.5rem, calc(50% - 4px))), 1fr));
+  }
+}
+
+/* ---- BUTTONS ---- */
+.md-typeset .md-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 1.6rem;
+  margin: 0.2rem 0.2rem 0.2rem 0;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--edge);
+  border-radius: 0;
+  background: var(--crt);
+  color: var(--main);
+  font: 600 0.55rem/1.3 var(--f-body);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: none;
+}
+
+.md-typeset .md-button .twemoji {
+  color: inherit;
+}
+
+.md-typeset .md-button:hover,
+.md-typeset .md-button:focus {
+  background: var(--crt);
+  border-color: var(--main);
+  color: var(--hot);
+}
+
+.md-typeset .md-button--primary {
+  background: var(--scan), var(--main);
+  border-color: var(--main);
+  color: var(--ink);
+}
+
+.md-typeset .md-button--primary:hover,
+.md-typeset .md-button--primary:focus {
+  background: var(--scan), var(--bright);
+  border-color: var(--bright);
+  color: var(--ink);
+}
+
+/* ---- CHIPS (the stack rows) ---- */
+.md-typeset ul.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0.6rem 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.md-typeset ul.chips > li {
+  margin: 0;
+  padding: 0.14rem 0.4rem;
+  border: 1px solid var(--rule-strong);
+  color: var(--bright);
+  font: 600 0.55rem/1.3 var(--f-body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* A hazard stripe marks the one thing that really is unfinished. */
+.md-typeset .construction-tag {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.3rem;
+  padding: 0.05rem 0.4rem 0.05rem 0.9rem;
+  border: 1px solid var(--bright);
+  background: var(--crt-2);
+  color: var(--bright);
+  font: 600 0.55rem/1.3 var(--f-body);
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.md-typeset .construction-tag::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0.55rem;
+  background: var(--hazard);
+}
+
+/* ---- SMALL GRIDS (Standalone tools, Reach out) ---- */
+.md-typeset .grid:not(.cards) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 8px;
+  margin: 1rem 0;
+}
+
+.md-typeset .grid:not(.cards) > ul {
+  display: contents;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.md-typeset .grid:not(.cards) > ul > li {
+  margin: 0;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--edge);
+  border-radius: 0;
+  background: var(--crt-2);
+  box-shadow: none;
+  font-size: 0.68rem;
+  transition: none;
+}
+
+@media (hover: hover) {
+  .md-typeset .grid:not(.cards) > ul > li:hover {
+    border-color: var(--rule-strong);
+  }
+}
+
+/* ---- TABLES (Credits) ---- */
+.md-typeset__scrollwrap,
+.md-typeset__table {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.md-typeset table:not([class]) {
+  display: table;
+  width: 100%;
+  border: 0;
+  border-collapse: collapse;
+  border-radius: 0;
+  font-size: 0.7rem;
+  background: none;
+}
+
+.md-typeset table:not([class]) th {
+  padding: 0.2rem 0.5rem 0.3rem 0;
+  border-bottom: 1px solid var(--edge);
+  background: none;
+  color: var(--label);
+  font: 600 0.55rem/1.2 var(--f-body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.md-typeset table:not([class]) td {
+  padding: 0.35rem 0.5rem 0.35rem 0;
+  border-top: 0;
+  border-bottom: 1px dotted var(--edge);
+  color: var(--read);
+  vertical-align: top;
+}
+
+.md-typeset table:not([class]) td:first-child {
+  width: 68%;
+  color: var(--hot);
+}
+
+.md-typeset table:not([class]) tbody tr:hover {
+  background: var(--crt-2);
+  box-shadow: none;
+}
+
+/* ---- SMALL PARTS ---- */
+.md-top {
+  border: 1px solid var(--main);
+  border-radius: 0;
+  background: var(--crt);
+  box-shadow: none;
+  color: var(--main);
+  font: 600 0.55rem/1 var(--f-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* The theme only fades a hidden button, which leaves it in the tab order. */
+.md-top[hidden] {
+  visibility: hidden;
+}
+
+.md-top:hover,
+.md-top:focus {
+  background: var(--crt);
+  color: var(--hot);
+}
+
+.md-tooltip,
+.md-tooltip2__inner {
+  border: 1px solid var(--main);
+  border-radius: 0;
+  background: var(--crt);
+  box-shadow: none;
+  color: var(--hot);
+  font-family: var(--f-body);
+}
+
+.md-footer-meta {
+  border-top: 1px solid var(--edge);
+  background: var(--crt);
+}
+
+.md-copyright::before {
+  content: "END OF RECORD";
+  content: "END OF RECORD" / "";
+  display: block;
+  color: var(--label);
+  font: 600 0.55rem/1.2 var(--f-body);
+  letter-spacing: 0.2em;
+}
+
+.md-social__link svg {
+  fill: var(--main);
+}
+
+.md-social__link:hover svg {
+  fill: var(--hot);
+}
+
+/* ---- REDUCED MOTION AND FORCED COLOURS ---- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .md-typeset h1 {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    filter: none;
+  }
+
+  body::before,
+  body::after {
+    display: none;
+  }
+
+  /* Fills are gone in this mode, so the current page gets a box of its own. */
+  .md-nav--primary .md-nav__item--active > .md-nav__link {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+  }
+
+  .md-typeset .grid.cards > ul > li,
+  .md-typeset .readout > div {
+    border: 1px solid CanvasText;
+    clip-path: none;
+  }
+
+  .md-typeset hr {
+    height: 0;
+    border-top: 1px solid CanvasText;
+  }
+}
+
+/* ---- PRINT: ink on paper ---- */
+@media print {
+  :root {
+    --crt: #fff;
+    --crt-2: #fff;
+    --plate: #fff;
+    --hot: #000;
+    --bright: #000;
+    --main: #000;
+    --label: #333;
+    --read: #000;
+    --ink: #fff;
+    --edge: #999;
+    --rule-strong: #999;
+    --scan: none;
+    --glow: transparent;
+    --glow-soft: transparent;
+  }
+
+  body::before,
+  body::after,
+  .md-typeset h1::after {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .md-typeset h1 {
+    background: none;
+    -webkit-text-fill-color: #000;
+    filter: none;
+  }
+
+  .md-typeset h2 {
+    background: none;
+    color: #000;
+    padding-left: 0;
+    break-after: avoid;
+  }
+
+  .md-typeset .grid.cards > ul > li,
+  .md-typeset .readout > div,
+  .md-typeset .grid.cards > ul > li::before,
+  .md-typeset .readout > div::before {
+    break-inside: avoid;
+    clip-path: none;
+  }
+
+  /* A card alone in its grid can fill a page, so it may split. Its title stays with its text. */
+  .md-typeset .grid.cards > ul > li:only-child {
+    break-inside: auto;
+  }
+
+  .md-typeset .grid.cards > ul > li > p:first-child,
+  .md-typeset .grid.cards > ul > li > hr {
+    break-after: avoid;
+  }
+
+  .md-typeset hr {
+    height: 1px;
+    background: #999;
+  }
+}

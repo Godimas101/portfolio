@@ -6,26 +6,20 @@ Chris Carpenter's portfolio site. **In development — repo is private until aes
 
 ```bash
 pip install -r requirements.txt
-
-# Base (no direction — plain material theme):
-mkdocs serve
-
-# Direction A — Cassette Core:
-mkdocs serve -f directions/A_cassette/mkdocs.yml
-
-# Direction B — Cyberpunk:
-mkdocs serve -f directions/B_cyberpunk/mkdocs.yml
-
-# Direction C — Hybrid space-ops:
-mkdocs serve -f directions/C_hybrid/mkdocs.yml
+zensical serve
 ```
 
 Opens at `http://localhost:8000`. Live reload on edits.
 
+The site is built with [Zensical](https://zensical.org), which reads `mkdocs.yml` as it is.
+The direction overlays (`directions/A_cassette/`, `stashed/B_cyberpunk/`, `stashed/C_hybrid/`)
+set `docs_dir: ../../docs`, and Zensical only accepts a docs folder inside the config file's
+own folder, so `zensical serve -f` can't preview them as they are.
+
 ## Deploy target *(after direction pick)*
 
 Options being weighed:
-- **GitHub Pages** via `mkdocs gh-deploy` (simplest, `.github.io` subdomain or custom domain)
+- **GitHub Pages** via `zensical build` + `ghp-import` (the deploy workflow; simplest, `.github.io` subdomain or custom domain)
 - **Cloudflare Pages** via GitHub Action (faster global CDN, easier custom domain)
 
 Will decide when direction is picked.

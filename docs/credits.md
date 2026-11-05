@@ -1,8 +1,3 @@
----
-hide:
-  - navigation
----
-
 # Credits
 
 **Games I've had a hand in shipping.** Grouped by studio, most recent first.
