@@ -60,8 +60,7 @@ I know AI isn't for everyone. I for one am having a blast with it.
 
     Star Citizen organization platform — event management, member coordination, org-facing tooling. Currently in development.
 
-    [:material-web: dev.starorg.tools](https://dev.starorg.tools/){ .md-button .md-button--primary }
-    [:material-book-open-page-variant: wiki.starorg.tools](https://wiki.starorg.tools/){ .md-button }
+    [:material-book-open-page-variant: wiki.starorg.tools](https://wiki.starorg.tools/){ .md-button .md-button--primary }
 
 </div>
 

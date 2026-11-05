@@ -1,9 +1,10 @@
 /* Keyboard access for the menu (portfolio#7).
 
    The theme builds its drawer from labels and hidden checkboxes, which only a
-   pointer can reach. This file swaps those labels for real buttons, keeps focus
-   inside the drawer while it's open, and tells screen readers which page is
-   current. Without it the labels stay, and the menu still works by pointer. */
+   pointer can reach. This file swaps those labels for real buttons, takes the
+   page behind out of reach while the drawer is open, and tells screen readers
+   which page is current. Without it the labels stay, and the menu still works
+   by pointer. */
 (() => {
   "use strict";
 
@@ -53,10 +54,12 @@
     if (!toggle) return;
     const item = toggle.closest(".md-nav__item");
     const opener = item.querySelector("button.md-nav__link");
-    all(underPanel).forEach((el) => { el.inert = toggle.checked && el !== item; });
-    opener.inert = toggle.checked;
-    opener.setAttribute("aria-expanded", String(toggle.checked));
-    if (moveFocus) focus(toggle.checked ? firstStop(item.querySelector(".md-nav--secondary")) : opener);
+    // The panel only exists at phone widths. Wider, the toggle shows nothing, so it must change nothing.
+    const open = toggle.checked && panelWidth.matches;
+    all(underPanel).forEach((el) => { el.inert = open && el !== item; });
+    opener.inert = open;
+    opener.setAttribute("aria-expanded", String(open));
+    if (moveFocus && panelWidth.matches) focus(open ? firstStop(item.querySelector(".md-nav--secondary")) : opener);
   }
 
   document.addEventListener("click", (event) => {
@@ -72,8 +75,10 @@
   // Escape steps back a level: panel to menu, then menu to page.
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape" || !drawer.checked) return;
+    // Search opens over the drawer and takes its own Escape.
+    if (event.target !== document.body && !event.target.closest(".md-sidebar--primary")) return;
     const toggle = panelToggle();
-    if (toggle && toggle.checked) {
+    if (toggle && toggle.checked && panelWidth.matches) {
       toggle.click();
     } else {
       drawer.click();
@@ -90,7 +95,8 @@
 
   // Runs for each page, because instant navigation swaps the sidebar.
   window.document$.subscribe(() => {
-    all("label[for='__toc']").forEach(toButton);
+    // Only the drawer's own controls: the desktop "On this page" heading stays a plain label.
+    all(".md-nav--primary label[for='__toc']").forEach(toButton);
     all("button.md-nav__title").forEach((button) => {
       button.setAttribute("aria-label", "On this page: back to the menu");
     });
