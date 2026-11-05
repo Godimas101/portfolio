@@ -97,6 +97,9 @@
     if (drawer.checked && !drawerWidth.matches) drawer.click();
   }));
 
+  // Chrome and Edge can restore the panel's toggle after the sync below, and they send no change event.
+  window.addEventListener("pageshow", () => syncPanel(false));
+
   // Runs for each page, because instant navigation swaps the sidebar.
   window.document$.subscribe(() => {
     // Only the drawer's own controls: the desktop "On this page" heading stays a plain label.
