@@ -1,6 +1,6 @@
 # portfolio
 
-Chris Carpenter's portfolio site. **In development — repo is private until aesthetic direction is picked.**
+Chris Carpenter's portfolio site, live at <https://godimas101.github.io/portfolio/>.
 
 ## Preview locally
 
@@ -16,23 +16,22 @@ The direction overlays (`directions/A_cassette/`, `stashed/B_cyberpunk/`, `stash
 set `docs_dir: ../../docs`, and Zensical only accepts a docs folder inside the config file's
 own folder, so `zensical serve -f` can't preview them as they are.
 
-## Deploy target *(after direction pick)*
+## Deploy
 
-Options being weighed:
-- **GitHub Pages** via `zensical build` + `ghp-import` (the deploy workflow; simplest, `.github.io` subdomain or custom domain)
-- **Cloudflare Pages** via GitHub Action (faster global CDN, easier custom domain)
+Every push to `main` deploys the site. `.github/workflows/deploy.yml` runs `zensical build --strict`, then
+`ghp-import` pushes `site/` to the `gh-pages` branch, which GitHub Pages serves at
+<https://godimas101.github.io/portfolio/>.
 
-Will decide when direction is picked.
+## Directions
 
-## Direction candidates
+Direction A, Cassette Core, was picked on 2026-07-16. Since 2026-11-05 the live look is Phosphor Console, an amber
+CRT console (`docs/assets/stylesheets/phosphor.css`, set in the root `mkdocs.yml`).
 
-| Direction | Vibe | Employer-safe? |
+| Direction | Vibe | Where |
 |---|---|---|
-| **A — Cassette Core** | Aliens franchise industrial, worn amber/orange, Nostromo-era terminals | Bold |
-| **B — Cyberpunk** | 2077 UI neon + magenta + cyan, glitch effects, high-tech dystopia | Bold |
-| **C — Hybrid** | Modern space-ops, dark mode with subtle retro accents | Safe |
-
-Chris picks one → we ship. The others become reference material.
+| **A — Cassette Core** | Aliens franchise industrial, worn amber/orange, Nostromo-era terminals | `directions/A_cassette/` (picked) |
+| **B — Cyberpunk** | 2077 UI neon + magenta + cyan, glitch effects, high-tech dystopia | `stashed/B_cyberpunk/` (not picked, kept for reference) |
+| **C — Hybrid** | Modern space-ops, dark mode with subtle retro accents | `stashed/C_hybrid/` (not picked, kept for reference) |
 
 ## Source of content
 

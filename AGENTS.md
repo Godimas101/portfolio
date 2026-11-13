@@ -7,10 +7,11 @@ Chris Carpenter's portfolio site. Static site built with Zensical (Material for 
 - **`mkdocs.yml`** — base site configuration (theme, nav, plugins). Zensical reads it as it is.
 - **`docs/`** — content (markdown pages, images, fonts). The live look is Phosphor Console: `docs/assets/stylesheets/phosphor.css`, with self-hosted OFL fonts in `docs/assets/fonts/`. No franchise names go on the site, CSS comments included.
 - **`overrides/`** — the two template overrides: the 404 page, and the browser title with the link preview tags
-- **`directions/`** — three aesthetic direction candidates for the initial pick:
-  - **`A_cassette/`** — Cassette Core (Aliens franchise — worn industrial, amber/orange, Nostromo vibe)
+- **`directions/A_cassette/`** — the picked direction (2026-07-16): Cassette Core (Aliens franchise — worn industrial, amber/orange, Nostromo vibe). An overlay config that keeps its NOSTROMO-CLASS branding.
+- **`stashed/`** — the two directions not picked, kept for reference:
   - **`B_cyberpunk/`** — Cyberpunk (2077 UI — neon glow, cyan+magenta, glitch)
   - **`C_hybrid/`** — Hybrid space-ops (modern engineer aesthetic, subtle retro accents, employer-safe)
+- **`.github/workflows/deploy.yml`** — the deploy. Every push to `main` builds with `zensical build --strict`, and `ghp-import` pushes `site/` to `gh-pages`, which GitHub Pages serves at <https://godimas101.github.io/portfolio/>. **A merge to `main` publishes.**
 - **`requirements.txt`** — Python deps (`zensical`, pinned exactly, and `ghp-import` for the deploy)
 
 ## Where work lives (RULE — non-negotiable)
@@ -27,7 +28,7 @@ Ticket body shape: memory `[[feedback-ticket-body-shape]]`.
 ## How to verify (before flagging In QA or closing)
 
 - **Content changes** — build locally (`zensical build --strict`) + preview (`zensical serve`), eyeball on desktop viewport + a mobile viewport (Chrome DevTools 375px).
-- **Styling changes** — screenshot via Playwright, compare against the intended direction's aesthetic reference. If it doesn't LOOK like Cassette Core / Cyberpunk / Hybrid, it doesn't ship.
+- **Styling changes** — screenshot via Playwright, compare against the live look (Phosphor Console). If it doesn't look like it belongs, it doesn't ship.
 - **Nav / structure changes** — verify search still works after a rebuild.
 - **Content-truthfulness** — every project bullet, every metric, every date needs to reflect reality. Chris links this from his resume — fabrications = career damage. Cross-check against the actual repo's README before committing.
 
@@ -35,7 +36,7 @@ Ticket body shape: memory `[[feedback-ticket-body-shape]]`.
 
 - **Fabricate project details** — repo star counts, download numbers, contribution stats, timelines. All numbers come from real sources (Steam Workshop pages, GitHub stats, etc.).
 - **Commit assets from external sources** without checking license (Cyberpunk 2077 art assets, Aliens franchise images, etc.). Reference-only inspiration; original art or clearly-licensed alternatives only.
-- **Publish (deploy) until Chris has picked a direction** — repo stays private during the 3-direction mockup phase.
+- **Change the repo's visibility** — that's Chris's call.
 - **Add Google Analytics or third-party tracking** without asking — Chris hasn't signaled he wants that.
 
 ## Related
@@ -46,4 +47,4 @@ Ticket body shape: memory `[[feedback-ticket-body-shape]]`.
 
 ---
 
-*Part of Chris's `Godimas101` personal repos. Repo stays private during initial build.*
+*Part of Chris's `Godimas101` personal repos.*
